@@ -98,14 +98,18 @@ No borrar el servidor anterior ni sus copias. Antes de recibir nuevas escrituras
 
 ## Dirección inicial elegida
 
-Se verificó el subdominio de la cuenta mediante consulta de solo lectura y se eligió `https://kasa-victoria-eventos.invitaciones-kb.workers.dev`. La dirección ya está en `PUBLIC_ORIGIN`; el Worker ya está publicado con ese nombre. Se preparó un código de instalación aleatorio en `var/cloudflare-production-secrets.json`, excluido de Git. El código se cargó como secreto en Cloudflare durante la publicación autorizada; el usuario debe usarlo para crear su contraseña en `/gestion`. Eliminar el secreto de instalación una vez configurada la administración.
+Se verificó el subdominio de la cuenta mediante consulta de solo lectura y se eligió `https://kasa-victoria-eventos.invitaciones-kv.workers.dev`. La dirección ya está en `PUBLIC_ORIGIN`; el Worker ya está publicado con ese nombre. Se preparó un código de instalación aleatorio en `var/cloudflare-production-secrets.json`, excluido de Git. El código se cargó como secreto en Cloudflare durante la publicación autorizada; el usuario debe usarlo para crear su contraseña en `/gestion`. Eliminar el secreto de instalación una vez configurada la administración.
 
 ## Primera publicación de prueba — 30 de octubre de 2026
 
-- URL: https://kasa-victoria-eventos.invitaciones-kb.workers.dev
+- URL: https://kasa-victoria-eventos.invitaciones-kv.workers.dev
 - Versión: `c4761ec5-030f-437f-915b-5fdc964593d6`. D1 y R2 conectados; tarea programada cada cinco minutos.
 - Verificación remota: inicio, creación de invitación, gestión y API responden 200; una ruta inexistente responde 404.
 - Se creó un pedido sintético sin datos personales reales, se comprobó sesión de cliente, persistencia D1 y subida/lectura de PNG en R2. Un visitante sin sesión recibió 401 para el pedido y la foto. Un origen distinto recibió 403.
 - El pedido sintético, su sesión, auditoría, correo pendiente, metadatos y objeto R2 fueron retirados. Se verificó ausencia de esos registros. No se importaron datos del proyecto local.
 - Instalación de administración protegida por código aleatorio: un código incorrecto respondió 403. Falta que el usuario establezca su contraseña desde `/gestion`; el login con contraseña real todavía no se ha probado en producción.
 - Correos reales pendientes de configurar y verificar. La aplicación sigue con los precios, instrucciones de pago y modo comercial de la configuración original; esta publicación es para pruebas.
+
+## Corrección del subdominio a invitaciones-kv — 30 de octubre de 2026
+
+El usuario cambió el subdominio de la cuenta a `invitaciones-kv`. Se actualizó `PUBLIC_ORIGIN`, se recompiló el frontend y se publicó la versión `2f4f0c26-a6a0-4b78-9ab2-01e4ea01d0cb`. Se verificaron respuestas 200 en inicio, creación de invitación, configuración y estado de acceso; la API confirma el origen HTTPS nuevo. D1 y R2 se conservaron.

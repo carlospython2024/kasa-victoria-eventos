@@ -27,6 +27,23 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     try {
       const url = new URL(request.url);
+      // Keep one origin for local navigation, cookies and CSRF validation.
+      const loopback = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+      if (
+        loopback.test(env.PUBLIC_ORIGIN) &&
+        loopback.test(url.origin) &&
+        new URL(env.PUBLIC_ORIGIN).port === url.port &&
+        url.origin !== env.PUBLIC_ORIGIN &&
+        ["GET", "HEAD"].includes(request.method)
+      ) {
+        const canonical = new URL(url.pathname + url.search, env.PUBLIC_ORIGIN);
+        return secure(
+          new Response(null, {
+            status: 307,
+            headers: { Location: canonical.href, "Cache-Control": "no-store" },
+          }),
+        );
+      }
       const local =
         /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(env.PUBLIC_ORIGIN) &&
         url.origin === env.PUBLIC_ORIGIN;

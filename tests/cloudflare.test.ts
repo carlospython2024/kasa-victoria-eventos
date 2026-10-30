@@ -7,8 +7,7 @@ const schema = readFileSync(
   new URL("../migrations/0001_initial.sql", import.meta.url),
   "utf8",
 );
-async function environment(t: any) {
-  const origin = "https://review.example";
+async function environment(t: any, origin = "https://review.example") {
   const mf = new Miniflare({
     modules: true,
     scriptPath: "worker-dist/index.js",
@@ -737,5 +736,29 @@ test("D1: una referencia Nequi simultánea solo acredita un pedido", async (t) =
       .prepare("SELECT count(*) n FROM payment_references")
       .first())!.n,
     1,
+  );
+});
+
+test("navegación local: 127.0.0.1 redirige a localhost conservando diseño y parámetros", async (t) => {
+  const env = await environment(t, "http://localhost:8787");
+  const path = "/crear?modelo=carta-de-amor";
+  const response = await env.mf.dispatchFetch("http://127.0.0.1:8787" + path, {
+    redirect: "manual",
+  });
+  assert.equal(response.status, 307);
+  assert.equal(response.headers.get("location"), env.origin + path);
+  const page = await env.mf.dispatchFetch(response.headers.get("location")!);
+  assert.equal(page.status, 200);
+  assert.match(page.headers.get("content-type")!, /text\/html/);
+  const config = await env.mf.dispatchFetch(env.origin + "/api/config");
+  assert.equal(config.status, 200);
+  assert.equal(((await config.json()) as any).publicUrl, env.origin);
+  assert.equal(
+    (
+      await env.client()("/orders", request, {
+        Origin: "http://127.0.0.1:8787",
+      })
+    ).status,
+    403,
   );
 });

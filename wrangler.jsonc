@@ -37,7 +37,7 @@
   ],
   "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "kasa-victoria-bucket" }],
   "vars": {
-    "PUBLIC_ORIGIN": "https://kasa-victoria-eventos.carlosmatallanabisa830.workers.dev",
+    "PUBLIC_ORIGIN": "https://kasa-victoria-eventos.invitaciones-kb.workers.dev",
   },
   "triggers": { "crons": ["*/5 * * * *"] },
   "observability": { "enabled": true },

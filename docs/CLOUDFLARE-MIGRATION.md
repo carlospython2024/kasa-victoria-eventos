@@ -98,4 +98,4 @@ No borrar el servidor anterior ni sus copias. Antes de recibir nuevas escrituras
 
 ## Dirección inicial elegida
 
-Se verificó el subdominio de la cuenta mediante consulta de solo lectura y se eligió `https://kasa-victoria-eventos.carlosmatallanabisa830.workers.dev`. La dirección ya está en `PUBLIC_ORIGIN`; todavía no hay un Worker publicado con ese nombre. Se preparó un código de instalación aleatorio en `var/cloudflare-production-secrets.json`, excluido de Git. Se podrá cargar como secreto en el paso de publicación revisado; no se ha enviado a Cloudflare.
+Se verificó el subdominio de la cuenta mediante consulta de solo lectura y se eligió `https://kasa-victoria-eventos.invitaciones-kb.workers.dev`. La dirección ya está en `PUBLIC_ORIGIN`; todavía no hay un Worker publicado con ese nombre. Se preparó un código de instalación aleatorio en `var/cloudflare-production-secrets.json`, excluido de Git. Se podrá cargar como secreto en el paso de publicación revisado; no se ha enviado a Cloudflare.

@@ -35,7 +35,7 @@
       "migrations_dir": "migrations",
     },
   ],
-  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "kasa-victoria-media" }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "kasa-victoria-bucket" }],
   "vars": { "PUBLIC_ORIGIN": "https://replace-before-deploy.example" },
   "triggers": { "crons": ["*/5 * * * *"] },
   "observability": { "enabled": true },

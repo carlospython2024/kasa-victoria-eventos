@@ -1,6 +1,6 @@
 # Migración a Cloudflare — revisión antes de publicar
 
-Estado: implementación local en `feature/cloudflare-migration`. No se han creado recursos remotos, subido datos, cambiado DNS ni desplegado la aplicación.
+Estado: implementación local en `feature/cloudflare-migration`. La cuenta ya dispone de D1 `kasa-victoria` y R2 privado `kasa-victoria-bucket`, creados por el usuario. El esquema `0001_initial.sql` ya se aplicó a esa D1 y se verificó que pedidos, fotos y respuestas siguen vacíos. No se han subido datos de clientes, cambiado DNS ni desplegado la aplicación.
 
 ## Arquitectura
 

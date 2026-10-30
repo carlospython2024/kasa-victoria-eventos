@@ -8,7 +8,7 @@ import { execFileSync } from "node:child_process";
 const { values } = parseArgs({
   options: {
     package: { type: "string" },
-    bucket: { type: "string", default: "kasa-victoria-media" },
+    bucket: { type: "string", default: "kasa-victoria-bucket" },
     remote: { type: "boolean", default: false },
     "persist-to": { type: "string" },
   },

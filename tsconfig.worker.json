@@ -1,19 +1,13 @@
 {
   "extends": "./tsconfig.server.json",
   "compilerOptions": {
-    "types": [
-      "node",
-      "@cloudflare/workers-types"
-    ],
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ]
+    "types": ["node", "@cloudflare/workers-types"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
   },
   "include": [
     "worker/**/*.ts",
     "scripts/export-cloudflare.ts",
-    "scripts/import-cloudflare-media.ts"
+    "scripts/import-cloudflare-media.ts",
+    "scripts/build-cloudflare.ts"
   ]
 }

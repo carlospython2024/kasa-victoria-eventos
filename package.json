@@ -13,7 +13,7 @@
     "check:worker": "tsc -p tsconfig.worker.json",
     "dev:cloudflare": "wrangler dev --local",
     "db:migrate:local": "wrangler d1 migrations apply kasa-victoria --local",
-    "build:worker": "pnpm build && pnpm check:worker && wrangler deploy --dry-run --outdir worker-dist",
+    "build:worker": "node --import tsx scripts/build-cloudflare.ts",
     "test:cloudflare": "pnpm build:worker && node --import tsx --test tests/cloudflare.test.ts tests/cloudflare-export.test.ts",
     "export:cloudflare": "node --import tsx scripts/export-cloudflare.ts",
     "import:media:cloudflare": "node --import tsx scripts/import-cloudflare-media.ts",

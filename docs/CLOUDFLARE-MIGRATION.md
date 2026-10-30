@@ -63,7 +63,7 @@ El importador de fotos verifica todos los tamaños y hashes antes de empezar; us
 
 1. Revisar cambios, pruebas, nombre del Worker, dominio, marca y datos de pago. `business.demo` sigue reflejando la configuración comercial original; revisar precios y textos antes de abrir ventas.
 2. Crear una base D1 y un bucket R2 **Standard** privados desde la cuenta elegida. Sustituir `database_id` de ejemplo y nombres en `wrangler.jsonc`. No introducir credenciales en Git.
-3. Configurar `PUBLIC_ORIGIN` con el dominio HTTPS definitivo sin barra final. Compilar con `VITE_PUBLIC_ORIGIN` igual al mismo dominio; esto genera canonical, Open Graph y robots públicos. Sin este valor, las páginas comerciales permanecen en modo noindex. Ejemplo PowerShell: `$env:VITE_PUBLIC_ORIGIN='https://dominio.example'` y después `pnpm build:worker`.
+3. Configurar `PUBLIC_ORIGIN` con el dominio HTTPS definitivo sin barra final. Compilar con `VITE_PUBLIC_ORIGIN` igual al mismo dominio; esto genera canonical, Open Graph y robots públicos. Sin este valor, las páginas comerciales permanecen en modo noindex. `pnpm build:worker` toma automáticamente el dominio de `PUBLIC_ORIGIN` y lo usa tanto en Vite como en el HTML prerenderizado; no requiere configurar una segunda variable manualmente.
 4. Crear `ADMIN_SETUP_TOKEN` aleatorio mediante `wrangler secret put ADMIN_SETUP_TOKEN`. Configurar opcionalmente `BUSINESS_EMAIL`, `EMAIL_FROM`, `RESEND_API_KEY` y `PAYMENT_INSTRUCTIONS`. Solo `VITE_PUBLIC_ORIGIN` es público; nunca prefijar secretos con `VITE_`. Resend requiere su propia cuenta/dominio verificado y cuotas.
 5. En la base REMOTA VACÍA, aplicar migraciones y luego el paquete final aprobado. Los comandos son `pnpm exec wrangler d1 migrations apply kasa-victoria --remote` y `pnpm exec wrangler d1 execute kasa-victoria --remote --file <paquete>/data.sql`.
 6. Importar fotos con `pnpm import:media:cloudflare --package <paquete> --remote`. Si se cambió el bucket, añadir `--bucket <nombre>`. Validar recuentos y objetos antes de permitir tráfico. Los comandos remotos de este apartado requieren revisión previa y no forman parte de las pruebas.
@@ -90,8 +90,12 @@ No borrar el servidor anterior ni sus copias. Antes de recibir nuevas escrituras
 
 ## Validación realizada
 
-- 15 pruebas originales y 7 pruebas Cloudflare/exportación aprobadas (22 en total). Incluyen el flujo completo, aislamiento, fotos privadas, vencimiento, CSV, login/cookies/CSRF, colisiones de versión y de referencia Nequi entre pedidos distintos.
+- 15 pruebas originales y 8 pruebas Cloudflare/exportación aprobadas (23 en total). Incluyen el flujo completo, aislamiento, fotos privadas, vencimiento, CSV, login/cookies/CSRF, colisiones de versión y de referencia Nequi entre pedidos distintos.
 - Exportación e importación de un paquete de prueba, con hash de fotos y carga a R2 local en almacenamiento temporal aislado. No se exportaron ni subieron los datos reales de clientes.
 - Compilación TypeScript/React, 18 rutas prerenderizadas y empaquetado de Worker mediante dry-run. También se compiló con un dominio público de prueba para comprobar canonical/robots.
 - Migración SQL aplicada a D1 local; comprobación HTTP con Wrangler de inicio, gestión, API, páginas inexistentes, redirecciones y cabeceras de seguridad.
 - No se han medido cuotas/CPU en producción ni enviado correos reales. El circuito de Resend conserva el mecanismo original y requiere credenciales y prueba posterior.
+
+## Dirección inicial elegida
+
+Se verificó el subdominio de la cuenta mediante consulta de solo lectura y se eligió `https://kasa-victoria-eventos.carlosmatallanabisa830.workers.dev`. La dirección ya está en `PUBLIC_ORIGIN`; todavía no hay un Worker publicado con ese nombre. Se preparó un código de instalación aleatorio en `var/cloudflare-production-secrets.json`, excluido de Git. Se podrá cargar como secreto en el paso de publicación revisado; no se ha enviado a Cloudflare.

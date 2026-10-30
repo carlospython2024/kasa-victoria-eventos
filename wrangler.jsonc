@@ -36,7 +36,9 @@
     },
   ],
   "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "kasa-victoria-bucket" }],
-  "vars": { "PUBLIC_ORIGIN": "https://replace-before-deploy.example" },
+  "vars": {
+    "PUBLIC_ORIGIN": "https://kasa-victoria-eventos.carlosmatallanabisa830.workers.dev",
+  },
   "triggers": { "crons": ["*/5 * * * *"] },
   "observability": { "enabled": true },
 }

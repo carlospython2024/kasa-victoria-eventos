@@ -7,9 +7,17 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && tsc -p tsconfig.server.json && vite build && node --import tsx scripts/prerender.tsx",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --import tsx --test tests/*.test.ts",
+    "test": "node --import tsx --test tests/logic.test.ts tests/workflow.test.ts",
     "start": "node --env-file-if-exists=.env.local --import tsx server/start.ts",
-    "check:server": "tsc -p tsconfig.server.json"
+    "check:server": "tsc -p tsconfig.server.json",
+    "check:worker": "tsc -p tsconfig.worker.json",
+    "dev:cloudflare": "wrangler dev --local",
+    "db:migrate:local": "wrangler d1 migrations apply kasa-victoria --local",
+    "build:worker": "pnpm build && pnpm check:worker && wrangler deploy --dry-run --outdir worker-dist",
+    "test:cloudflare": "pnpm build:worker && node --import tsx --test tests/cloudflare.test.ts tests/cloudflare-export.test.ts",
+    "export:cloudflare": "node --import tsx scripts/export-cloudflare.ts",
+    "import:media:cloudflare": "node --import tsx scripts/import-cloudflare-media.ts",
+    "test:all": "pnpm test && pnpm test:cloudflare"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -17,14 +25,17 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261029.1",
     "@types/node": "^24.19.2",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "miniflare": "^4.20260730.0",
     "prettier": "^3.9.10",
     "tsx": "^4.20.0",
     "typescript": "^5.9.0",
-    "vite": "^7.1.0"
+    "vite": "^7.1.0",
+    "wrangler": "^4.155.0"
   },
   "engines": {
     "node": ">=24.0.0"

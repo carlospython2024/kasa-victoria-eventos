@@ -6,3 +6,9 @@ tmp/
 .env.production
 var/
 *.sqlite*
+
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+worker-dist/

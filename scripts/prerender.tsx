@@ -22,7 +22,7 @@ if (!template.includes('<div id="root"></div>'))
     "La salida ya fue prerenderizada. Ejecuta vite build antes de volver a generar las rutas.",
   );
 writeFileSync(resolve(dist, "workflow.html"), template);
-const origin = publicOrigin();
+const origin = publicOrigin(process.env.VITE_PUBLIC_ORIGIN || site.publicUrl);
 const routes = [
   {
     path: "/",
@@ -57,7 +57,7 @@ for (const route of routes) {
   let html = template
     .replace(/<title>.*?<\/title>/, "")
     .replace(/<meta name="description"[^>]*\/>/, "");
-  const metas = seoTags(route);
+  const metas = seoTags(route, origin || "");
   html = html
     .replace("</head>", metas + "</head>")
     .replace(

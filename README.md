@@ -117,3 +117,7 @@ El `Dockerfile` usa Node 24 y `/data` como volumen. Requiere dominio, código de
 `pnpm test` cubre precios y el flujo HTTP: aislamiento de pedidos, autenticación, origen de solicitudes, fotos, pagos, referencias duplicadas, aprobación, publicación, vigencia, CSV, cupos y revocación. `pnpm build` comprueba tipos del cliente y servidor y genera 18 rutas comerciales/demostrativas y la entrada dinámica.
 
 Las pruebas visuales usan `tmp/workflow-qa/`, nunca `var/`. `qa.html` permite revisar tamaños durante desarrollo. Consulta `docs/FLUJO-OPERATIVO.md` y `docs/RECURSOS.md`.
+
+## Cloudflare (revisión local)
+
+Migración preparada para Workers con Static Assets, D1 y R2. Consulta [la guía de migración](docs/CLOUDFLARE-MIGRATION.md). Ejecuta `pnpm test:all` para validar ambos entornos. No hay despliegue automático.

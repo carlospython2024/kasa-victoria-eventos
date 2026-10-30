@@ -1,0 +1,7 @@
+# Copy to .dev.vars for Wrangler local development only.
+PUBLIC_ORIGIN=http://localhost:8787
+ADMIN_SETUP_TOKEN=local-review-setup-token-change-before-production
+# BUSINESS_EMAIL=
+# EMAIL_FROM=
+# RESEND_API_KEY=
+# PAYMENT_INSTRUCTIONS=

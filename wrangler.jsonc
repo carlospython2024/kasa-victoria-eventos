@@ -29,7 +29,9 @@
     {
       "binding": "DB",
       "database_name": "kasa-victoria",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "1cc5e155-4e6f-462b-8c1e-2d1284e411ff",
+      // Preserve the existing local review database. Remote previews need a separate D1 ID.
+      "preview_database_id": "00000000-0000-0000-0000-000000000000",
       "migrations_dir": "migrations",
     },
   ],

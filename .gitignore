@@ -1,0 +1,8 @@
+node_modules/
+dist/
+tmp/
+.env.local
+.env
+.env.production
+var/
+*.sqlite*

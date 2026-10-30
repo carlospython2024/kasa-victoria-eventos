@@ -1,0 +1,10 @@
+node_modules
+dist
+tmp
+var
+.env*
+.git
+docs/reference-assets
+reference*.html
+design
+output

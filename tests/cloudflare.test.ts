@@ -7,7 +7,11 @@ const schema = readFileSync(
   new URL("../migrations/0001_initial.sql", import.meta.url),
   "utf8",
 );
-async function environment(t: any, origin = "https://review.example") {
+async function environment(
+  t: any,
+  origin = "https://review.example",
+  extraBindings: Record<string, string> = {},
+) {
   const mf = new Miniflare({
     modules: true,
     scriptPath: "worker-dist/index.js",
@@ -18,6 +22,7 @@ async function environment(t: any, origin = "https://review.example") {
     bindings: {
       PUBLIC_ORIGIN: origin,
       ADMIN_SETUP_TOKEN: "review-setup-token",
+      ...extraBindings,
     },
     assets: {
       directory: "dist",
@@ -737,6 +742,34 @@ test("D1: una referencia Nequi simultánea solo acredita un pedido", async (t) =
       .first())!.n,
     1,
   );
+});
+
+test("Workers: contactos y pago proceden de los bindings, sin destinatario predeterminado", async (t) => {
+  for (const configured of [false, true]) {
+    const env = await environment(
+      t,
+      "https://review.example",
+      configured
+        ? {
+            BUSINESS_WHATSAPP: "573000000000",
+            PAYMENT_INSTRUCTIONS: "Transferencia ficticia; no enviar dinero.",
+          }
+        : {},
+    );
+    const result = (await (
+      await env.mf.dispatchFetch(env.origin + "/api/config")
+    ).json()) as any;
+    assert.equal(result.whatsapp, configured ? "573000000000" : "");
+    assert.equal(result.paymentsConfigured, configured);
+    const customer = env.client();
+    const created = await customer("/orders", request);
+    assert.equal(created.status, 201);
+    const order = await customer(`/orders/${created.data.id}`);
+    assert.equal(
+      order.data.paymentInstructions,
+      configured ? "Transferencia ficticia; no enviar dinero." : "",
+    );
+  }
 });
 
 test("navegación local: 127.0.0.1 redirige a localhost conservando diseño y parámetros", async (t) => {

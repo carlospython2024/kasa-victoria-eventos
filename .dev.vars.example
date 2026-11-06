@@ -2,6 +2,7 @@
 PUBLIC_ORIGIN=http://localhost:8787
 ADMIN_SETUP_TOKEN=local-review-setup-token-change-before-production
 # BUSINESS_EMAIL=
+# BUSINESS_WHATSAPP=
 # EMAIL_FROM=
 # RESEND_API_KEY=
 # PAYMENT_INSTRUCTIONS=

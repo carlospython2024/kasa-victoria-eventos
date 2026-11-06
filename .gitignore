@@ -4,6 +4,8 @@ tmp/
 .env.local
 .env
 .env.production
+.env.*
+!.env.example
 var/
 *.sqlite*
 
@@ -12,3 +14,17 @@ var/
 .dev.vars.*
 !.dev.vars.example
 worker-dist/
+wrangler.production.jsonc
+
+# Audio de terceros: instalar desde las fuentes de docs/AUDIO.md.
+/public/assets/audio/*.mp3
+
+# Referencias históricas de terceros, conservadas fuera del repositorio.
+/reference.html
+/reference-proposal.html
+/docs/demo-reference.html
+/docs/reference-assets/
+/docs/reference-catalog-original.json
+/docs/assets.json
+/scripts/prepare.py
+/scripts/download-assets.py

@@ -1,3 +1,4 @@
+import "./load-public-env.ts";
 import React from "react";
 import {
   readFileSync,

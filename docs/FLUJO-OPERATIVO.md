@@ -25,8 +25,8 @@ Antes, explorar un diseño terminaba en una consulta sin seguimiento y las respu
 
 ## Condiciones actuales
 
-- WhatsApp: +57 000 000 0000.
-- Nequi: 0000000000, Titular de ejemplo.
+- WhatsApp: contacto del negocio definido en la configuración privada.
+- Nequi: destinatario e instrucciones confirmados por el negocio y definidos en la configuración privada.
 - Pago completo por defecto; anticipo configurable.
 - Entrega de 3 a 5 días hábiles después de validar información.
 - El cliente propone la vigencia posterior al evento; el negocio confirma duración y valor antes del pago. No se inventaron suplementos.

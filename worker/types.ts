@@ -5,6 +5,7 @@ export interface Env {
   PUBLIC_ORIGIN: string;
   ADMIN_SETUP_TOKEN?: string;
   BUSINESS_EMAIL?: string;
+  BUSINESS_WHATSAPP?: string;
   EMAIL_FROM?: string;
   RESEND_API_KEY?: string;
   PAYMENT_INSTRUCTIONS?: string;

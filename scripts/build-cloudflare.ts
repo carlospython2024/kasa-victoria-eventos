@@ -2,10 +2,12 @@ import { readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import ts from "typescript";
 
-// Use the same public origin for the Vite client, prerendered HTML and Worker API.
+// Production uses private local settings; the default remains a demo dry-run.
+const production = process.argv.includes("--production");
+const configPath = production ? "wrangler.production.jsonc" : "wrangler.jsonc";
 const { config, error } = ts.parseConfigFileTextToJson(
-  "wrangler.jsonc",
-  readFileSync("wrangler.jsonc", "utf8"),
+  configPath,
+  readFileSync(configPath, "utf8"),
 );
 if (error) throw new Error("Invalid wrangler.jsonc");
 const origin = config.vars?.PUBLIC_ORIGIN;
@@ -18,15 +20,24 @@ if (
   url.hostname.endsWith(".example")
 )
   throw new Error(
-    "Configure the actual HTTPS PUBLIC_ORIGIN in wrangler.jsonc before building.",
+    `Configure the actual HTTPS PUBLIC_ORIGIN in ${configPath} before building.`,
   );
 const manager = process.env.npm_execpath;
 if (!manager) throw new Error("Run this build with pnpm build:worker.");
 const env = { ...process.env, VITE_PUBLIC_ORIGIN: origin };
 for (const args of [
-  ["run", "build"],
+  ["run", production ? "build:production" : "build"],
   ["run", "check:worker"],
-  ["exec", "wrangler", "deploy", "--dry-run", "--outdir", "worker-dist"],
+  [
+    "exec",
+    "wrangler",
+    "deploy",
+    "--config",
+    configPath,
+    "--dry-run",
+    "--outdir",
+    "worker-dist",
+  ],
 ]) {
   const result = spawnSync(process.execPath, [manager, ...args], {
     env,

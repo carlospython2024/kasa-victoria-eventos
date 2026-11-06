@@ -173,14 +173,13 @@ export function createApplication(options: Options = {}) {
       : null;
   }
   const price = () => pricing();
-  const paymentInstructions =
-    process.env.PAYMENT_INSTRUCTIONS ||
-    "Nequi: 0000000000. Titular: Titular de ejemplo. Comprueba el nombre antes de confirmar la transferencia e incluye el código del pedido en la referencia.";
+  const paymentInstructions = process.env.PAYMENT_INSTRUCTIONS?.trim() || "";
+  const businessWhatsapp = process.env.BUSINESS_WHATSAPP || site.whatsapp;
   function config() {
     return {
       brand: site.name,
       email: process.env.BUSINESS_EMAIL || site.email,
-      whatsapp: site.whatsapp,
+      whatsapp: businessWhatsapp,
       publicUrl: origin,
       total: price().amount,
       deposit: price().deposit,
@@ -188,13 +187,13 @@ export function createApplication(options: Options = {}) {
       activeDays: 90,
       deliveryDays: business.deliveryDays,
       provisional: business.demo,
-      paymentsConfigured: true,
+      paymentsConfigured: !!paymentInstructions,
       emailConfigured: !!(
         process.env.RESEND_API_KEY &&
         process.env.EMAIL_FROM &&
         origin
       ),
-      privacyContact: process.env.BUSINESS_EMAIL || site.email || site.whatsapp,
+      privacyContact: process.env.BUSINESS_EMAIL || site.email || businessWhatsapp,
     };
   }
   function rate(req: IncomingMessage, bucket: string, limit: number) {

@@ -16,14 +16,20 @@ El diseño infantil utiliza globos y formas en CSS; los demás eventos adicional
 
 Los iconos son de Lucide React. Poppins y Cormorant Garamond se descargaron de Google Fonts para servirlas localmente. Se conservan sus avisos de licencia en `public/assets/fonts/`.
 
-Los recursos de Fixdate utilizados durante la inspección están en `docs/reference-assets/`, fuera de la salida publicada. No se reutilizan en la interfaz final sus contactos, logotipo ni testimonios. Se sustituyó el catálogo original por los quince diseños configurados en el código actual.
+Durante el diseño se consultó Fixdate como referencia. El 5 de noviembre de 2026 se retiraron del árbol de trabajo las copias de sus páginas HTML, las 105 imágenes de referencia, los inventarios asociados y dos scripts históricos de extracción. Se conservaron 112 archivos, con sus hashes comprobados, en un respaldo local fuera del repositorio. No se usan para construir ni ejecutar la aplicación actual.
+
+El catálogo actual contiene quince diseños configurados en el código del proyecto. El respaldo externo no se publica ni se ofrece bajo MIT. La retirada de los archivos actuales no elimina sus copias en el historial: ese saneamiento sigue pendiente antes de presentar el repositorio como libre de esas copias.
 
 ## Música de las invitaciones de matrimonio
 
-Tres MP3 aportados por la usuaria, copiados a `public/assets/audio/`. Se conserva el nombre de autor incluido en cada archivo; no se adjuntaron certificados de licencia.
+Tres MP3 descargados de Pixabay y aportados para el proyecto. Las páginas individuales coinciden con los autores e identificadores de los archivos locales; se comprobaron el 4 de noviembre de 2026. No se dispone aquí de certificados de descarga. Se conservan para la ejecución local en `public/assets/audio/`, pero se excluyen del seguimiento de Git para no redistribuir los archivos originales desde el código fuente público.
 
 - AtlasAudio, `piano-romantic-510293`: Magnolia editorial, Rosa contemporánea y Costa eterna.
 - Leberch, `romantic-piano-584476`: Jardín botánico, Oliva serena y Cielo de seda.
 - PaulYudin, `romantic-piano-164822`: Memorias de película, Vino de gala, Carta de amor y Noche estrellada.
+
+Las fuentes individuales, condiciones y pasos de instalación están en [AUDIO.md](AUDIO.md). La música mantiene la licencia Pixabay Content License; no queda cubierta por una eventual licencia MIT del código. Conservar los créditos no sustituye el cumplimiento de las condiciones de la fuente.
+
+Esta preparación retira los MP3 de la siguiente versión del árbol de archivos, pero no elimina las copias presentes en commits anteriores. La revisión del historial debe resolverse antes de afirmar que el repositorio público ya no distribuye esos archivos.
 
 La asignación se edita en `src/music.ts`. Audio local con volumen inicial del 35 %, repetición, reproducción únicamente al pulsar el botón, pausa/reanudación y pausa al desmontar la invitación. `preload="none"` evita descargar la canción antes de escucharla.

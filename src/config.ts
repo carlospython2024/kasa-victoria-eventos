@@ -16,18 +16,31 @@ export interface BusinessConfig {
   changesPolicy: string;
 }
 
-// Fuente única de identidad y contacto. Completar con datos propios antes de publicar.
+type PublicBuildEnvironment = {
+  VITE_PUBLIC_ORIGIN?: string;
+  VITE_BUSINESS_WHATSAPP?: string;
+  VITE_BUSINESS_EMAIL?: string;
+};
+const publicBuild = (
+  import.meta as ImportMeta & {
+    env?: PublicBuildEnvironment;
+  }
+).env;
+const nodeBuild = typeof process !== "undefined" ? process.env : {};
+
+// Solo datos destinados a mostrarse al público; nunca claves ni contraseñas.
 export const site = {
   name: "siempre",
   tagline: "Historias que merecen una gran invitación.",
   logo: "", // URL local opcional, por ejemplo /assets/marca.svg
   publicUrl:
-    (import.meta as ImportMeta & { env?: { VITE_PUBLIC_ORIGIN?: string } }).env
-      ?.VITE_PUBLIC_ORIGIN ||
-    (typeof process !== "undefined" ? process.env.VITE_PUBLIC_ORIGIN : "") ||
-    "", // Dominio HTTPS público, sin ruta.
-  whatsapp: "000000000000", // Colombia, número facilitado por la usuaria.
-  email: "",
+    publicBuild?.VITE_PUBLIC_ORIGIN || nodeBuild.VITE_PUBLIC_ORIGIN || "", // Dominio HTTPS público, sin ruta.
+  whatsapp:
+    publicBuild?.VITE_BUSINESS_WHATSAPP ||
+    nodeBuild.VITE_BUSINESS_WHATSAPP ||
+    "",
+  email:
+    publicBuild?.VITE_BUSINESS_EMAIL || nodeBuild.VITE_BUSINESS_EMAIL || "",
   instagram: "",
   facebook: "",
   proposalPath: "/propuesta/bodas-colombia",

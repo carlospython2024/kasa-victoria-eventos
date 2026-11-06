@@ -2,6 +2,22 @@
 
 React y TypeScript con servidor Node.js 24 y SQLite. Conserva diez diseños de matrimonio, cinco celebraciones adicionales y la identidad Ciruela editorial. «Siempre» continúa como nombre provisional.
 
+## Música en una copia nueva
+
+Los tres MP3 de Pixabay se instalan por separado siguiendo [docs/AUDIO.md](docs/AUDIO.md). Se conservan las rutas y la función de reproducción; los archivos originales no se incluyen en el seguimiento actual del código. Si ya tienes los MP3 locales, este cambio los conserva. La retirada de copias históricas sigue pendiente. La música conserva su propia licencia y no se incorpora a la licencia del código.
+
+## Licencia y recursos
+
+El código propio del proyecto se distribuye bajo la [licencia MIT](LICENSE), a nombre de Carlos Matallana. La música, las fuentes y las dependencias conservan sus propias licencias y avisos; consulta [docs/RECURSOS.md](docs/RECURSOS.md). Las copias de páginas e imágenes de referencia de terceros se retiraron del árbol de trabajo y se conservaron fuera del repositorio. La revisión y retirada de sus versiones históricas siguen pendientes.
+
+## Próximo trabajo de producto
+
+El [roadmap de 20 horas](ROADMAP.md) propone mejorar elección y solicitud, pago manual y seguimiento, revisión y entrega, Gestión y coherencia visual y de textos. Son mejoras pendientes del flujo existente; el servicio seguirá siendo personalizado y la transferencia Nequi se verificará fuera de la plataforma. No incluye una pasarela de pago ni entrega automática.
+
+## Configuración de ejemplo y del negocio real
+
+El código público no contiene destinatarios Nequi ni contactos reales como valores predeterminados. `pnpm build` y `pnpm build:worker` generan la versión de ejemplo; `pnpm build:worker:production` utiliza la configuración privada del negocio para compilar y empaquetar sin desplegar. Consulta [docs/CONFIGURACION.md](docs/CONFIGURACION.md) antes de preparar una publicación. Las mejoras se comparten en el mismo código; los datos y secretos se configuran aparte.
+
 ## Iniciar
 
 En Windows puedes hacer doble clic en `Iniciar.cmd`, o ejecutar `.\Iniciar.cmd` desde PowerShell. Esta opción funciona cuando PowerShell bloquea archivos `.ps1`, sin cambiar la política de ejecución.
@@ -29,7 +45,7 @@ En la primera visita a Gestión, crea tu propia contraseña de al menos 12 carac
 1. El cliente selecciona diseño, deja sus datos y propone una vigencia de 30, 90, 180 o 365 días después del evento.
 2. Se crea un pedido persistente con enlace privado. El cliente guarda su enlace y puede completar la información en tres secciones.
 3. El equipo confirma valor, pago inicial, vigencia, rondas de ajustes y plazo desde Gestión. Los precios generales siguen siendo de referencia; otras celebraciones se cotizan individualmente.
-4. El cliente acepta las condiciones y paga por Nequi: **0000000000, Titular de ejemplo**. WhatsApp: **+57 000 000 0000**.
+4. El cliente acepta las condiciones y transfiere por Nequi siguiendo las instrucciones confirmadas del pedido. El contacto del negocio y el destinatario se configuran aparte; esta documentación no publica datos de una cuenta real.
 5. «Ya pagué» registra un aviso. El equipo comprueba el ingreso y registra valor y referencia única. El aviso del cliente no acredita dinero.
 6. Con el pago inicial verificado, el cliente envía sus datos. El equipo los valida y comienza el plazo acordado de 3 a 5 días hábiles.
 7. El equipo prepara la invitación y la envía a revisión. El cliente aprueba o solicita ajustes desde su espacio privado.

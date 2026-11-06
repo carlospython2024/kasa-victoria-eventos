@@ -4,11 +4,11 @@ React y TypeScript con servidor Node.js 24 y SQLite. Conserva diez diseños de m
 
 ## Música en una copia nueva
 
-Los tres MP3 de Pixabay se instalan por separado siguiendo [docs/AUDIO.md](docs/AUDIO.md). Se conservan las rutas y la función de reproducción; los archivos originales no se incluyen en el seguimiento actual del código. Si ya tienes los MP3 locales, este cambio los conserva. La retirada de copias históricas sigue pendiente. La música conserva su propia licencia y no se incorpora a la licencia del código.
+Los tres MP3 de Pixabay se instalan por separado siguiendo [docs/AUDIO.md](docs/AUDIO.md). Se conservan las rutas y la función de reproducción; los archivos originales no se incluyen en el código público. Si ya tienes los MP3 locales, este cambio los conserva. El 5 de noviembre de 2026 se retiraron también de la historia publicada en la rama principal. La música conserva su propia licencia y no se incorpora a la licencia del código.
 
 ## Licencia y recursos
 
-El código propio del proyecto se distribuye bajo la [licencia MIT](LICENSE), a nombre de Carlos Matallana. La música, las fuentes y las dependencias conservan sus propias licencias y avisos; consulta [docs/RECURSOS.md](docs/RECURSOS.md). Las copias de páginas e imágenes de referencia de terceros se retiraron del árbol de trabajo y se conservaron fuera del repositorio. La revisión y retirada de sus versiones históricas siguen pendientes.
+El código propio del proyecto se distribuye bajo la [licencia MIT](LICENSE), a nombre de Carlos Matallana. La música, las fuentes y las dependencias conservan sus propias licencias y avisos; consulta [docs/RECURSOS.md](docs/RECURSOS.md). Las copias de páginas e imágenes de referencia de terceros se conservaron fuera del repositorio y se retiraron del árbol actual y de la historia publicada en la rama principal.
 
 ## Próximo trabajo de producto
 

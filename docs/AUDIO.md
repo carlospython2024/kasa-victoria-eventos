@@ -29,4 +29,4 @@ Conserva por pista la página original, autor, fecha de descarga y certificado o
 
 ## Historial
 
-Los MP3 estaban registrados en versiones anteriores. Retirarlos del seguimiento actual no los borra del historial. Antes de presentar el repositorio como libre de esas copias, debe revisarse y, si procede, sanearse el historial con respaldo y coordinación de la publicación. No se ha reescrito ni publicado el historial como parte de este cambio.
+Los MP3 estaban registrados en versiones anteriores. El 5 de noviembre de 2026 se publicó un historial saneado en la rama principal, preservando autores, fechas y mensajes de las contribuciones y retirando las rutas de los MP3. Se comprobó la historia alcanzable preparada y el árbol publicado en GitHub. Esto no elimina copias descargadas previamente ni garantiza que el proveedor haya eliminado objetos antiguos de sus cachés; no se ofrece la música original como parte del código público actual.

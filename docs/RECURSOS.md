@@ -18,7 +18,7 @@ Los iconos son de Lucide React. Poppins y Cormorant Garamond se descargaron de G
 
 Durante el diseño se consultó Fixdate como referencia. El 5 de noviembre de 2026 se retiraron del árbol de trabajo las copias de sus páginas HTML, las 105 imágenes de referencia, los inventarios asociados y dos scripts históricos de extracción. Se conservaron 112 archivos, con sus hashes comprobados, en un respaldo local fuera del repositorio. No se usan para construir ni ejecutar la aplicación actual.
 
-El catálogo actual contiene quince diseños configurados en el código del proyecto. El respaldo externo no se publica ni se ofrece bajo MIT. La retirada de los archivos actuales no elimina sus copias en el historial: ese saneamiento sigue pendiente antes de presentar el repositorio como libre de esas copias.
+El catálogo actual contiene quince diseños configurados en el código del proyecto. El respaldo externo no se publica ni se ofrece bajo MIT. El 5 de noviembre de 2026 se publicó el saneamiento de la rama principal y se comprobó que las rutas retiradas no aparecen en su historia alcanzable.
 
 ## Música de las invitaciones de matrimonio
 
@@ -30,6 +30,6 @@ Tres MP3 descargados de Pixabay y aportados para el proyecto. Las páginas indiv
 
 Las fuentes individuales, condiciones y pasos de instalación están en [AUDIO.md](AUDIO.md). La música mantiene la licencia Pixabay Content License; no queda cubierta por una eventual licencia MIT del código. Conservar los créditos no sustituye el cumplimiento de las condiciones de la fuente.
 
-Esta preparación retira los MP3 de la siguiente versión del árbol de archivos, pero no elimina las copias presentes en commits anteriores. La revisión del historial debe resolverse antes de afirmar que el repositorio público ya no distribuye esos archivos.
+Los tres MP3 se retiraron del árbol público y del historial alcanzable de la rama principal en el saneamiento publicado el 5 de noviembre de 2026. Se conservan en el entorno local para ejecutar y compilar la aplicación con música, según las condiciones de su fuente.
 
 La asignación se edita en `src/music.ts`. Audio local con volumen inicial del 35 %, repetición, reproducción únicamente al pulsar el botón, pausa/reanudación y pausa al desmontar la invitación. `preload="none"` evita descargar la canción antes de escucharla.

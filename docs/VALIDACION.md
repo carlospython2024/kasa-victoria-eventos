@@ -46,3 +46,9 @@ Se retiraron los contactos y destinatarios Nequi fijos del código y de la docum
 `pnpm test:all` pasó 19 pruebas de lógica/servidor/configuración y 9 de Cloudflare/exportación: 28 en total. Las nuevas comprobaciones incluyen aislamiento de contactos en modo demo, configuración pública de producción sin cargar claves del servidor en el prerender, prioridad de variables explícitas y configuración de contactos/pago en ambos servidores.
 
 También pasó `pnpm build:worker:production` con dry-run. Se verificó que el bundle del navegador y la configuración usada por el prerender corresponden al contacto conservado para producción. La compilación demo se inspeccionó y no contenía los números ni el titular conocidos. Estas comprobaciones no implican una publicación remota ni un ensayo con dinero o clientes reales.
+
+### Publicación del paquete de preparación
+
+Con autorización de Carlos, el 5 de noviembre de 2026 se actualizó la rama principal pública con el paquete preparado `a3cacea`. Se verificaron el commit remoto y el árbol de archivos desde GitHub: README, LICENSE MIT y ROADMAP presentes; archivos privados de configuración, MP3 y referencias retiradas ausentes. El escaneo de los diez commits preparados no detectó secretos.
+
+La carpeta habitual de trabajo quedó sincronizada con ese historial conservando sus archivos privados y audios locales. Los metadatos e historial anteriores se respaldaron fuera del repositorio. No se ejecutó un despliegue de la aplicación ni se modificaron D1/R2 como parte de esta publicación de Git. El alcance de UX del roadmap sigue pendiente y la aceptación de Alignerr no está confirmada.

@@ -1,97 +1,97 @@
-# Siempre · Invitaciones y gestión de pedidos
+# Siempre · Invitations and Order Management
 
-React y TypeScript con servidor Node.js 24 y SQLite. Conserva diez diseños de matrimonio, cinco celebraciones adicionales y la identidad Ciruela editorial. «Siempre» continúa como nombre provisional.
+React and TypeScript with a Node.js 24 server and SQLite. Includes ten wedding designs, five additional celebration types, and the Ciruela editorial visual identity. “Siempre” remains the working name.
 
-## Música en una copia nueva
+## Music in a Fresh Checkout
 
-Los tres MP3 de Pixabay se instalan por separado siguiendo [docs/AUDIO.md](docs/AUDIO.md). Se conservan las rutas y la función de reproducción; los archivos originales no se incluyen en el código público. Si ya tienes los MP3 locales, este cambio los conserva. El 5 de noviembre de 2026 se retiraron también de la historia publicada en la rama principal. La música conserva su propia licencia y no se incorpora a la licencia del código.
+The three Pixabay MP3 files are installed separately by following [docs/AUDIO.md](docs/AUDIO.md). Their paths and playback functionality are preserved; the original files are not included in the public source code. If you already have the MP3 files locally, this change preserves them. On November 5, 2026, they were also removed from the published history of the main branch. Music retains its own license and is not covered by the code license.
 
-## Licencia y recursos
+## License and Assets
 
-El código propio del proyecto se distribuye bajo la [licencia MIT](LICENSE), a nombre de Carlos Matallana. La música, las fuentes y las dependencias conservan sus propias licencias y avisos; consulta [docs/RECURSOS.md](docs/RECURSOS.md). Las copias de páginas e imágenes de referencia de terceros se conservaron fuera del repositorio y se retiraron del árbol actual y de la historia publicada en la rama principal.
+The project's own code is distributed under the [MIT License](LICENSE), in the name of Carlos Matallana. Music, fonts, and dependencies retain their own licenses and notices; see [docs/RECURSOS.md](docs/RECURSOS.md). Copies of third-party reference pages and images were kept outside the repository and removed from the current tree and the published history of the main branch.
 
-## Próximo trabajo de producto
+## Upcoming Product Work
 
-El [roadmap de 20 horas](ROADMAP.md) propone mejorar elección y solicitud, pago manual y seguimiento, revisión y entrega, Gestión y coherencia visual y de textos. Son mejoras pendientes del flujo existente; el servicio seguirá siendo personalizado y la transferencia Nequi se verificará fuera de la plataforma. No incluye una pasarela de pago ni entrega automática.
+The [20-hour roadmap](ROADMAP.md) proposes improvements to design selection and requests, manual payments and tracking, review and delivery, the management dashboard, and visual and copy consistency. These are planned improvements to the existing workflow; the service will remain personalized, and Nequi transfers will be verified outside the platform. The scope does not include a payment gateway or automatic delivery.
 
-## Configuración de ejemplo y del negocio real
+## Demo and Live Business Configuration
 
-El código público no contiene destinatarios Nequi ni contactos reales como valores predeterminados. `pnpm build` y `pnpm build:worker` generan la versión de ejemplo; `pnpm build:worker:production` utiliza la configuración privada del negocio para compilar y empaquetar sin desplegar. Consulta [docs/CONFIGURACION.md](docs/CONFIGURACION.md) antes de preparar una publicación. Las mejoras se comparten en el mismo código; los datos y secretos se configuran aparte.
+The public code does not contain real Nequi recipients or contact details as default values. `pnpm build` and `pnpm build:worker` generate the demo version; `pnpm build:worker:production` uses the business's private configuration to build and package without deploying. See [docs/CONFIGURACION.md](docs/CONFIGURACION.md) before preparing a release. Improvements share the same codebase; data and secrets are configured separately.
 
-## Iniciar
+## Getting Started
 
-En Windows puedes hacer doble clic en `Iniciar.cmd`, o ejecutar `.\Iniciar.cmd` desde PowerShell. Esta opción funciona cuando PowerShell bloquea archivos `.ps1`, sin cambiar la política de ejecución.
+On Windows, double-click `Iniciar.cmd`, or run `.\Iniciar.cmd` from PowerShell. This option works when PowerShell blocks `.ps1` files, without changing the execution policy.
 
 ```powershell
 .\Iniciar.ps1
 ```
 
-Abre http://127.0.0.1:5173. El mismo proceso sirve la web y su API; los pedidos se guardan en el servidor.
+Open http://127.0.0.1:5173. The same process serves the website and its API; orders are stored on the server.
 
-| Ruta | Uso |
+| Route | Purpose |
 | --- | --- |
-| `/` | Catálogo comercial |
-| `/crear?modelo=jardin-botanico` | Crear solicitud con diseño elegido |
-| `/gestion` | Consultas, pedidos, pagos y entrega |
-| `/pedido/ID` | Espacio privado del cliente |
-| `/vista/ID` | Vista previa privada |
-| `/i/nombres-identificador` | Invitación publicada |
-| `/privacidad` | Uso de información y contacto |
+| `/` | Public catalog |
+| `/crear?modelo=jardin-botanico` | Create a request with the selected design |
+| `/gestion` | Inquiries, orders, payments, and delivery |
+| `/pedido/ID` | Private client workspace |
+| `/vista/ID` | Private preview |
+| `/i/nombres-identificador` | Published invitation |
+| `/privacidad` | Information use and contact details |
 
-En la primera visita a Gestión, crea tu propia contraseña de al menos 12 caracteres. No existe una contraseña predeterminada. El alta inicial solo se permite desde el equipo local; en producción requiere el código de instalación del servidor.
+On your first visit to the management dashboard (Gestión), create your own password with at least 12 characters. There is no default password. Initial setup is only allowed from the local machine; in production, it requires the server setup token.
 
-## Recorrido completo
+## Complete Workflow
 
-1. El cliente selecciona diseño, deja sus datos y propone una vigencia de 30, 90, 180 o 365 días después del evento.
-2. Se crea un pedido persistente con enlace privado. El cliente guarda su enlace y puede completar la información en tres secciones.
-3. El equipo confirma valor, pago inicial, vigencia, rondas de ajustes y plazo desde Gestión. Los precios generales siguen siendo de referencia; otras celebraciones se cotizan individualmente.
-4. El cliente acepta las condiciones y transfiere por Nequi siguiendo las instrucciones confirmadas del pedido. El contacto del negocio y el destinatario se configuran aparte; esta documentación no publica datos de una cuenta real.
-5. «Ya pagué» registra un aviso. El equipo comprueba el ingreso y registra valor y referencia única. El aviso del cliente no acredita dinero.
-6. Con el pago inicial verificado, el cliente envía sus datos. El equipo los valida y comienza el plazo acordado de 3 a 5 días hábiles.
-7. El equipo prepara la invitación y la envía a revisión. El cliente aprueba o solicita ajustes desde su espacio privado.
-8. Se publica únicamente con la versión aprobada y el pago completo. Se conserva una copia: editar el borrador no cambia la invitación publicada hasta otra aprobación y publicación.
-9. El cliente comparte el enlace y consulta asistencia, alimentación, transporte y canciones. Puede descargar las respuestas en CSV.
+1. The client selects a design, provides their details, and proposes an expiration period of 30, 90, 180, or 365 days after the event.
+2. A persistent order with a private link is created. The client saves their link and can complete the information in three sections.
+3. The team confirms the price, initial payment, expiration period, revision rounds, and turnaround time in the management dashboard. General prices remain indicative; other celebrations are quoted individually.
+4. The client accepts the terms and transfers payment through Nequi, following the order's confirmed instructions. The business contact and payment recipient are configured separately; this documentation does not publish real account details.
+5. “Ya pagué” (“I've paid”) records a notification. The team checks the incoming payment and records its amount and unique reference. The client's notification does not confirm receipt of funds.
+6. Once the initial payment is verified, the client submits their information. The team validates it, and the agreed turnaround period of 3 to 5 business days begins.
+7. The team prepares the invitation and sends it for review. The client approves it or requests changes from their private workspace.
+8. Publication requires an approved version and full payment. A snapshot is preserved: editing the draft does not change the published invitation until it is approved and published again.
+9. The client shares the link and checks attendance, meal preferences, transportation, and song requests. Responses can be downloaded as CSV.
 
-El pago inicial predeterminado es el **100 %**. Se puede cambiar a anticipo por pedido antes de recibir pagos. Las rondas se inicializan en dos, pero son editables y deben confirmarse en cada cotización; falta definir la política general del negocio.
+The default initial payment is **100%**. It can be changed to a deposit for each order before any payments are received. Revision rounds default to two, but can be edited and must be confirmed in each quote; the general business policy has yet to be defined.
 
-## Personalización e invitados
+## Customization and Guests
 
-Datos editables: nombres, fecha y hora de Colombia, lugares, direcciones, horarios, fotos, historia, vestimenta, regalos, música, hospedaje, menú, transporte y hashtag. Las bodas usan la primera foto como portada. Las celebraciones conservan sus estilos. Los tres MP3 fueron aportados por la usuaria.
+Editable details include names, date and time in Colombia, venues, addresses, schedules, photos, story, dress code, gifts, music, accommodation, menu, transportation, and hashtag. Weddings use the first photo as the cover. Other celebrations retain their styles. The three MP3 files were supplied by the user.
 
-Desde Invitados, después de publicar, se generan enlaces personales con nombre y cupos. Las respuestas se actualizan incluso desde otro dispositivo. Se pueden renovar o revocar. La personalización permite exigir enlaces personales: en ese modo el enlace general no abre el evento.
+After publication, the Guests section (Invitados) generates personal links with a name and guest allowance. Responses can be updated even from another device. Links can be renewed or revoked. Customization settings allow personal links to be required: in that mode, the general link does not open the event.
 
-En el enlace general, una cookie identifica la respuesta del navegador. Una persona que responde desde otro navegador puede aparecer duplicada; el panel lo advierte. Para controlar cupos, utiliza enlaces personales.
+For the general link, a cookie identifies the browser's response. Someone responding from another browser may appear as a duplicate; the dashboard warns about this. Use personal links to manage guest allowances.
 
-El enlace privado del **pedido** administra información y respuestas: nunca se envía a invitados. Si el cliente lo pierde, el equipo verifica su identidad y genera otro en Gestión. Renovarlo revoca accesos anteriores.
+The private **order** link manages information and responses: never send it to guests. If the client loses it, the team verifies their identity and generates a new one in the management dashboard. Renewing it revokes previous access.
 
-## Contacto y correo
+## Contact and Email
 
-El formulario comercial guarda consultas reales en Gestión → Consultas. El correo transaccional utiliza una cola persistente y un adaptador Resend. Si faltan dominio, remitente o clave, no se envía y el panel lo indica. Los botones de WhatsApp preparan el texto; la persona decide enviarlo.
+The public inquiry form saves real inquiries under Gestión → Consultas (Management → Inquiries). Transactional email uses a persistent queue and a Resend adapter. If the domain, sender, or key is missing, no email is sent, and the dashboard indicates this. WhatsApp buttons prepare the message text; the person decides whether to send it.
 
-Variables del servidor para correo:
+Server environment variables for email:
 
-- `PUBLIC_ORIGIN`: origen HTTPS público, sin ruta ni barra final.
-- `BUSINESS_EMAIL`: buzón del negocio.
-- `EMAIL_FROM`: remitente verificado con el proveedor.
-- `RESEND_API_KEY`: clave privada, nunca en el navegador.
+- `PUBLIC_ORIGIN`: public HTTPS origin, without a path or trailing slash.
+- `BUSINESS_EMAIL`: business mailbox.
+- `EMAIL_FROM`: sender verified with the provider.
+- `RESEND_API_KEY`: private key, never exposed to the browser.
 
-Los correos fallidos se pueden volver a poner en cola. «Aceptado por proveedor» no significa leído. En modo local, guarda el enlace privado mostrado al crear el pedido.
+Failed emails can be queued again. “Aceptado por proveedor” (“Accepted by provider”) does not mean read. In local mode, save the private link displayed when the order is created.
 
-## Datos y respaldo
+## Data and Backups
 
-Registros en `var/siempre.sqlite` y fotos en `var/uploads/`, fuera de la carpeta pública. Persisten al cerrar el servidor. El panel del negocio empieza vacío: las pruebas usan otra base.
+Records are stored in `var/siempre.sqlite` and photos in `var/uploads/`, outside the public folder. They persist after the server stops. The business dashboard starts empty: tests use a separate database.
 
 ```sh
 node --env-file-if-exists=.env.local --import tsx scripts/backup.ts
 ```
 
-La copia usa el respaldo de SQLite e incluye fotos y manifiesto en `var/backups/`. Conserva otra copia fuera del servidor con acceso restringido. Para restaurar, detén la aplicación y restaura juntos base y `uploads` de un mismo respaldo en una carpeta nueva; inicia con `DATA_DIR` apuntando allí. Ensaya la restauración por separado antes de depender de ella.
+The backup uses SQLite's backup functionality and includes photos and a manifest in `var/backups/`. Keep another copy outside the server with restricted access. To restore, stop the application and restore both the database and `uploads` from the same backup into a new folder; start with `DATA_DIR` pointing there. Test restoration separately before relying on it.
 
-La vigencia desactiva el acceso público. **No borra automáticamente los registros privados.** La conservación y la identidad del responsable deben completarse antes del lanzamiento.
+Expiration disables public access. **It does not automatically delete private records.** The retention policy and the identity of the party responsible for the data must be finalized before launch.
 
-## Construir y publicar
+## Build and Deployment
 
-Requiere Node.js 24+. En desarrollo puedes copiar `.env.example` a `.env.local`, sin subirlo al repositorio.
+Requires Node.js 24+. For development, you can copy `.env.example` to `.env.local` without committing it to the repository.
 
 ```sh
 pnpm install
@@ -100,40 +100,40 @@ pnpm build
 pnpm start
 ```
 
-También funciona con npm. `npm run dev` usa Vite y la API. `npm start` sirve compilación y API desde el mismo origen, con audio por rangos y metadatos públicos. `Iniciar.ps1 -Produccion` construye y sirve en el puerto 4173.
+npm also works. `npm run dev` uses Vite and the API. `npm start` serves the build and API from the same origin, with audio range requests and public metadata. `Iniciar.ps1 -Produccion` builds and serves on port 4173.
 
-**Publicar solo `dist` en alojamiento estático no habilita este flujo.** Se necesita una instancia Node 24 detrás de HTTPS, disco persistente para `DATA_DIR`, reinicio del proceso y copias externas. SQLite no debe almacenarse en disco efímero ni en réplicas independientes.
+**Deploying only `dist` to static hosting does not enable this workflow.** It requires a Node 24 instance behind HTTPS, persistent storage for `DATA_DIR`, process restart management, and external backups. SQLite must not be stored on ephemeral storage or in independent replicas.
 
-Variables de producción:
+Production environment variables:
 
 - `NODE_ENV=production`
 - `PUBLIC_ORIGIN=https://dominio-real`
-- `ADMIN_SETUP_TOKEN`: código largo y aleatorio para el alta inicial; retirarlo después.
-- `DATA_DIR`: volumen persistente separado del código publicado.
-- `HOST`, `PORT`: interfaz y puerto, por defecto 127.0.0.1:4173.
-- `PAYMENT_INSTRUCTIONS`: sustituye instrucciones de Nequi.
-- Variables de correo anteriores, cuando se active el proveedor.
+- `ADMIN_SETUP_TOKEN`: long, random token for initial setup; remove it afterward.
+- `DATA_DIR`: persistent volume separate from the deployed code.
+- `HOST`, `PORT`: interface and port, defaulting to 127.0.0.1:4173.
+- `PAYMENT_INSTRUCTIONS`: overrides the Nequi instructions.
+- The email variables listed above, when the provider is enabled.
 
-El `Dockerfile` usa Node 24 y `/data` como volumen. Requiere dominio, código de instalación y almacenamiento persistente. La construcción con Docker no se ha ejecutado en este equipo.
+The `Dockerfile` uses Node 24 and `/data` as a volume. It requires a domain, setup token, and persistent storage. The Docker build has not been run on this machine.
 
-`src/config.ts` conserva marca, contacto y precios. Configura también `site.publicUrl` con el dominio y vuelve a construir para generar metadatos públicos del catálogo. Pedidos e invitaciones tienen `noindex`.
+`src/config.ts` contains branding, contact details, and prices. Also configure `site.publicUrl` with the domain and rebuild to generate public catalog metadata. Orders and invitations have `noindex`.
 
-## Límites operativos
+## Operational Limitations
 
-- Nequi se verifica manualmente. No hay conciliación automática, cobro dentro de la web, reembolsos ni facturación electrónica.
-- Gestión utiliza un acceso de equipo; el historial distingue Equipo/Cliente, sin usuarios individuales.
-- Se edita contenido dentro de los diseños, sin editor de arrastrar elementos.
-- Los enlaces personales funcionan por posesión del enlace y se pueden reenviar.
-- Hasta ocho fotos, 5 MB por foto, 40 archivos por pedido y 500 enlaces personales.
-- Recuperación de acceso de gestión a cargo del operador del servidor.
-- Faltan nombre definitivo, dominio, alojamiento, correo, tarifas generales y conservación de datos para el lanzamiento público.
+- Nequi payments are verified manually. There is no automatic reconciliation, payment collection within the website, refund processing, or electronic invoicing.
+- The management dashboard uses shared team access; the history distinguishes Team/Client, without individual user accounts.
+- Content is edited within the designs; there is no drag-and-drop editor.
+- Personal links grant access to anyone who has the link and can be forwarded.
+- Limits: eight photos, 5 MB per photo, 40 files per order, and 500 personal links.
+- The server operator is responsible for recovering access to the management dashboard.
+- The final name, domain, hosting, email, general pricing, and data retention policy still need to be defined before public launch.
 
-## Verificación
+## Verification
 
-`pnpm test` cubre precios y el flujo HTTP: aislamiento de pedidos, autenticación, origen de solicitudes, fotos, pagos, referencias duplicadas, aprobación, publicación, vigencia, CSV, cupos y revocación. `pnpm build` comprueba tipos del cliente y servidor y genera 18 rutas comerciales/demostrativas y la entrada dinámica.
+`pnpm test` covers pricing and the HTTP workflow: order isolation, authentication, request origins, photos, payments, duplicate references, approval, publication, expiration, CSV, guest allowances, and revocation. `pnpm build` checks client and server types and generates 18 public/demo routes and the dynamic entry point.
 
-Las pruebas visuales usan `tmp/workflow-qa/`, nunca `var/`. `qa.html` permite revisar tamaños durante desarrollo. Consulta `docs/FLUJO-OPERATIVO.md` y `docs/RECURSOS.md`.
+Visual tests use `tmp/workflow-qa/`, never `var/`. `qa.html` allows viewport sizes to be checked during development. See `docs/FLUJO-OPERATIVO.md` and `docs/RECURSOS.md`.
 
-## Cloudflare (revisión local)
+## Cloudflare (Local Review)
 
-Migración preparada para Workers con Static Assets, D1 y R2. Consulta [la guía de migración](docs/CLOUDFLARE-MIGRATION.md). Ejecuta `pnpm test:all` para validar ambos entornos. No hay despliegue automático.
+A migration to Workers with Static Assets, D1, and R2 is prepared. See the [migration guide](docs/CLOUDFLARE-MIGRATION.md). Run `pnpm test:all` to validate both environments. There is no automatic deployment.

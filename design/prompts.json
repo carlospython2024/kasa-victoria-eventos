@@ -1,6 +1,6 @@
 {
-  "tool": "image_gen (herramienta integrada)",
-  "purpose": "Mockups conceptuales estáticos; no son interfaces implementadas.",
+  "tool": "image_gen (built-in tool)",
+  "purpose": "Static conceptual mockups; these are not implemented interfaces.",
   "prompts": [
     {
       "slug": "01-magnolia-editorial",

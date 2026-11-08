@@ -1,35 +1,35 @@
-# Recursos de la implementación
+# Implementation Assets
 
-Los cinco PNG de `public/assets/` fueron generados mediante la herramienta integrada image_gen para este proyecto. Son arte independiente; no son recortes de los mockups de interfaz.
+The five PNG files in `public/assets/` were generated for this project using the built-in image_gen tool. They are standalone artwork, rather than crops from interface mockups.
 
-| Archivo | Uso y dirección del prompt |
+| File | Use and Prompt Direction |
 | --- | --- |
-| `magnolia.png` | Ilustración botánica de una magnolia marfil con hojas oliva y fondo transparente, para el diseño editorial. |
-| `rose.png` | Rosa de jardín cereza y coral con tallo largo, ilustración de gouache y fondo transparente. |
-| `botanical.png` | Grupo de helecho y orquídea blanca, estética de herbario colombiano y fondo transparente. |
-| `couple-garden.png` | Fotografía editorial sintética de una pareja adulta colombiana paseando por un jardín, luz cálida y montañas. |
-| `couple-evening.png` | Fotografía editorial sintética de una pareja adulta en una recepción nocturna con velas y tonos vino. |
+| `magnolia.png` | Botanical illustration of an ivory magnolia with olive leaves and a transparent background, for the editorial design. |
+| `rose.png` | Cherry and coral garden rose with a long stem, gouache illustration with a transparent background. |
+| `botanical.png` | Fern and white orchid arrangement, Colombian herbarium aesthetic with a transparent background. |
+| `couple-garden.png` | Synthetic editorial photograph of an adult Colombian couple walking in a garden, with warm light and mountains. |
+| `couple-evening.png` | Synthetic editorial photograph of an adult couple at an evening reception with candles and wine tones. |
 
-Los archivos originales generados se conservaron en la carpeta de imágenes de Codex y se copiaron al proyecto. Las personas de las fotografías no son clientes ni testimonios. Las imágenes se usan como ejemplos personalizables.
+The original generated files were retained in the Codex images folder and copied into the project. The people in the photographs are not clients or testimonials. The images serve as customizable examples.
 
-El diseño infantil utiliza globos y formas en CSS; los demás eventos adicionales combinan tipografía, iconos y las ilustraciones propias. La interfaz completa se construye con HTML y CSS accesibles, sin incrustar pantallas completas como imágenes.
+The children's design uses CSS balloons and shapes; the other additional events combine typography, icons, and original illustrations. The complete interface is built with accessible HTML and CSS, without embedding full screens as images.
 
-Los iconos son de Lucide React. Poppins y Cormorant Garamond se descargaron de Google Fonts para servirlas localmente. Se conservan sus avisos de licencia en `public/assets/fonts/`.
+Icons are from Lucide React. Poppins and Cormorant Garamond were downloaded from Google Fonts for local hosting. Their license notices are retained in `public/assets/fonts/`.
 
-Durante el diseño se consultó Fixdate como referencia. El 5 de noviembre de 2026 se retiraron del árbol de trabajo las copias de sus páginas HTML, las 105 imágenes de referencia, los inventarios asociados y dos scripts históricos de extracción. Se conservaron 112 archivos, con sus hashes comprobados, en un respaldo local fuera del repositorio. No se usan para construir ni ejecutar la aplicación actual.
+Fixdate was consulted as a reference during design. On November 5, 2026, copies of its HTML pages, 105 reference images, associated inventories, and two historical extraction scripts were removed from the working tree. A total of 112 files, with verified hashes, were preserved in a local backup outside the repository. They are not used to build or run the current application.
 
-El catálogo actual contiene quince diseños configurados en el código del proyecto. El respaldo externo no se publica ni se ofrece bajo MIT. El 5 de noviembre de 2026 se publicó el saneamiento de la rama principal y se comprobó que las rutas retiradas no aparecen en su historia alcanzable.
+The current catalog contains fifteen designs configured in the project's code. The external backup is neither published nor offered under MIT. On November 5, 2026, the main branch history cleanup was published, and the removed paths were confirmed absent from its reachable history.
 
-## Música de las invitaciones de matrimonio
+## Wedding Invitation Music
 
-Tres MP3 descargados de Pixabay y aportados para el proyecto. Las páginas individuales coinciden con los autores e identificadores de los archivos locales; se comprobaron el 4 de noviembre de 2026. No se dispone aquí de certificados de descarga. Se conservan para la ejecución local en `public/assets/audio/`, pero se excluyen del seguimiento de Git para no redistribuir los archivos originales desde el código fuente público.
+Three MP3 files downloaded from Pixabay and supplied for the project. The individual pages match the artists and identifiers of the local files; they were checked on November 4, 2026. Download certificates are not available here. The files are retained for local execution in `public/assets/audio/`, but excluded from Git tracking to avoid redistributing the original files through the public source code.
 
-- AtlasAudio, `piano-romantic-510293`: Magnolia editorial, Rosa contemporánea y Costa eterna.
-- Leberch, `romantic-piano-584476`: Jardín botánico, Oliva serena y Cielo de seda.
-- PaulYudin, `romantic-piano-164822`: Memorias de película, Vino de gala, Carta de amor y Noche estrellada.
+- AtlasAudio, `piano-romantic-510293`: Magnolia editorial, Rosa contemporánea, and Costa eterna.
+- Leberch, `romantic-piano-584476`: Jardín botánico, Oliva serena, and Cielo de seda.
+- PaulYudin, `romantic-piano-164822`: Memorias de película, Vino de gala, Carta de amor, and Noche estrellada.
 
-Las fuentes individuales, condiciones y pasos de instalación están en [AUDIO.md](AUDIO.md). La música mantiene la licencia Pixabay Content License; no queda cubierta por una eventual licencia MIT del código. Conservar los créditos no sustituye el cumplimiento de las condiciones de la fuente.
+Individual sources, terms, and installation steps are in [AUDIO.md](AUDIO.md). Music retains the Pixabay Content License; it is not covered by any MIT license for the code. Retaining credits does not replace compliance with the source's terms.
 
-Los tres MP3 se retiraron del árbol público y del historial alcanzable de la rama principal en el saneamiento publicado el 5 de noviembre de 2026. Se conservan en el entorno local para ejecutar y compilar la aplicación con música, según las condiciones de su fuente.
+The three MP3 files were removed from the public tree and the main branch's reachable history in the cleanup published on November 5, 2026. They remain in the local environment for running and building the application with music, subject to their source's terms.
 
-La asignación se edita en `src/music.ts`. Audio local con volumen inicial del 35 %, repetición, reproducción únicamente al pulsar el botón, pausa/reanudación y pausa al desmontar la invitación. `preload="none"` evita descargar la canción antes de escucharla.
+Assignments are edited in `src/music.ts`. Local audio starts at 35% volume, loops, plays only after pressing the button, supports pause/resume, and pauses when the invitation unmounts. `preload="none"` avoids downloading the song before listening.

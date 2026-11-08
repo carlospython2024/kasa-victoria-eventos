@@ -1,47 +1,47 @@
-# Un código, configuración de ejemplo y de producción
+# One Codebase, Demo and Production Configuration
 
-El código es el mismo para la revisión pública y el servicio real. La diferencia está en la configuración y los datos usados, no en dos aplicaciones con cambios separados.
+The code is the same for public review and the live service. The difference lies in the configuration and data used, rather than two applications with separate changes.
 
-## Comandos de ejemplo
+## Demo Commands
 
-- `pnpm build`: compila el frontend en modo `demo` y genera las páginas sin contactos privados.
-- `pnpm build:worker`: construye y empaqueta el Worker con `wrangler.jsonc` y `--dry-run`; no despliega.
-- `pnpm test:all`: ejecuta los escenarios de prueba y el empaquetado de ejemplo con datos ficticios.
+- `pnpm build`: builds the frontend in `demo` mode and generates pages without private contact details.
+- `pnpm build:worker`: builds and packages the Worker with `wrangler.jsonc` and `--dry-run`; does not deploy.
+- `pnpm test:all`: runs the test scenarios and demo packaging with fictional data.
 
-El modo demo no carga archivos `.env` en Vite y elimina los contactos públicos heredados al prerenderizar. No debe usarse como configuración de publicación del negocio real.
+Demo mode does not load `.env` files in Vite and removes legacy public contact details during prerendering. It must not be used as the deployment configuration for the live business.
 
-En el servidor, sin `PAYMENT_INSTRUCTIONS` no hay destinatario Nequi predeterminado y `/api/config` informa `paymentsConfigured: false`. Los pedidos existentes conservan las instrucciones que ya tenían guardadas; cambiar la configuración no los reescribe.
+On the server, without `PAYMENT_INSTRUCTIONS` there is no default Nequi recipient, and `/api/config` reports `paymentsConfigured: false`. Existing orders retain their previously saved instructions; changing configuration does not rewrite them.
 
-## Archivos privados de producción
+## Private Production Files
 
-Los siguientes archivos locales están excluidos de Git:
+The following local files are excluded from Git:
 
-| Archivo | Contenido y uso |
+| File | Contents and Purpose |
 | --- | --- |
-| `.env.production.local` | Contactos públicos para la compilación real (`VITE_BUSINESS_WHATSAPP`, `VITE_BUSINESS_EMAIL` y `VITE_PUBLIC_ORIGIN`). Puede conservar también la configuración del servidor Node. |
-| `wrangler.production.jsonc` | Configuración del Worker real, sus recursos y variables como `BUSINESS_WHATSAPP`, `BUSINESS_EMAIL` y `PAYMENT_INSTRUCTIONS`. No debe contener contraseñas ni claves de API. |
-| `.dev.vars` | Variables del desarrollo local con Wrangler; no se publica ni se incorpora automáticamente a los despliegues. |
+| `.env.production.local` | Public contact details for the live build (`VITE_BUSINESS_WHATSAPP`, `VITE_BUSINESS_EMAIL`, and `VITE_PUBLIC_ORIGIN`). May also retain Node server configuration. |
+| `wrangler.production.jsonc` | Configuration for the live Worker, its resources, and variables such as `BUSINESS_WHATSAPP`, `BUSINESS_EMAIL`, and `PAYMENT_INSTRUCTIONS`. Must not contain passwords or API keys. |
+| `.dev.vars` | Local development variables for Wrangler; not published or automatically included in deployments. |
 
-Se conservaron los valores reales existentes al realizar esta separación. No los reemplaces al copiar plantillas. Para otra instalación, utiliza `.env.example` y `wrangler.production.example.jsonc` como guía y configura tus propios valores y recursos.
+Existing real values were preserved when this separation was made. Do not replace them when copying templates. For another installation, use `.env.example` and `wrangler.production.example.jsonc` as guides and configure your own values and resources.
 
-El contacto de compilación `VITE_BUSINESS_WHATSAPP` y el contacto del Worker `BUSINESS_WHATSAPP` deben corresponder al mismo negocio. Lo mismo aplica al correo público si se configura. El origen público del frontend y el del Worker deben coincidir. Si se cambia alguno, actualizar ambos archivos antes de construir la publicación.
+The build contact `VITE_BUSINESS_WHATSAPP` and Worker contact `BUSINESS_WHATSAPP` must refer to the same business. The same applies to the public email address, if configured. The frontend and Worker public origins must match. If either changes, update both files before building the release.
 
-## Comprobar la compilación real
+## Checking the Live Build
 
 ```powershell
 pnpm.cmd build:worker:production
 ```
 
-Este comando selecciona `wrangler.production.jsonc`, compila el frontend en modo producción y realiza únicamente un empaquetado `--dry-run`. Lee los contactos de `.env.production.local` también durante la generación de HTML. **No publica cambios**.
+This command selects `wrangler.production.jsonc`, builds the frontend in production mode, and performs only `--dry-run` packaging. It also reads contact details from `.env.production.local` during HTML generation. **It does not publish changes**.
 
-El comando de publicación debe usar la misma configuración privada y una compilación real recién verificada. No publicar `dist` generado en modo demo. La publicación y cualquier cambio de variables remotas se revisan por separado antes de ejecutarlos. Esta preparación no cambió la página desplegada, D1, R2 ni los secretos de Cloudflare.
+The deployment command must use the same private configuration and a freshly verified live build. Do not publish `dist` generated in demo mode. Deployment and any remote variable changes are reviewed separately before execution. This preparation did not change the deployed website, D1, R2, or Cloudflare secrets.
 
-## Datos públicos y secretos
+## Public Data and Secrets
 
-El WhatsApp, el correo de contacto y las instrucciones de pago que se muestran al cliente son información de la aplicación. Retirarlos del código fuente no los oculta a quienes usan la página real.
+The WhatsApp number, contact email, and payment instructions shown to clients are application information. Removing them from the source code does not hide them from users of the live website.
 
-Las variables `VITE_*` se incorporan al navegador: nunca deben contener claves de API, contraseñas, tokens administrativos ni datos de clientes. Las claves del servidor se mantienen en los secretos de Cloudflare o en el entorno privado del servidor Node. No copiar pedidos, fotografías, bases de datos o registros reales al repositorio.
+`VITE_*` variables are included in the browser: they must never contain API keys, passwords, administrative tokens, or client data. Server keys are kept in Cloudflare secrets or the Node server's private environment. Do not copy real orders, photographs, databases, or logs into the repository.
 
-Antes de subir cambios, comprobar que Git no registre los archivos privados. Las plantillas contienen solo nombres y ejemplos; no deben copiarse sobre archivos configurados sin revisar. La limpieza de copias anteriores en el historial requiere un procedimiento independiente.
+Before pushing changes, check that Git is not tracking private files. Templates contain only names and examples; do not copy them over configured files without review. Cleaning earlier copies from history requires a separate procedure.
 
-Referencias: [Vite: variables y modos](https://vite.dev/guide/env-and-mode), [Cloudflare: secretos y desarrollo local](https://developers.cloudflare.com/workers/configuration/secrets/).
+References: [Vite: Environment Variables and Modes](https://vite.dev/guide/env-and-mode), [Cloudflare: Secrets and Local Development](https://developers.cloudflare.com/workers/configuration/secrets/).

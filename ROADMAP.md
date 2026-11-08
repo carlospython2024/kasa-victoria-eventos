@@ -1,55 +1,55 @@
-# Próximas 20 horas: un servicio más claro para el cliente y el equipo
+# Next 20 Hours: A Clearer Service for Clients and the Team
 
-Estado: trabajo propuesto, aún no implementado. Alcance acordado con Carlos Matallana el 5 de noviembre de 2026. Las horas son estimaciones de desarrollo y verificación; no son horas ya realizadas ni una promesa de pago.
+Status: proposed work, not yet implemented. Scope agreed with Carlos Matallana on November 5, 2026. Hours are estimates for development and verification; they are neither hours already worked nor a promise of payment.
 
-## Objetivo
+## Objective
 
-Mejorar la experiencia existente desde elegir una invitación hasta recibir su enlace, y simplificar la operación de Gestión. La aplicación ya tiene pedidos, cotización, pagos manuales, datos de personalización, revisión, aprobación, publicación e invitados. El objetivo es reorganizar esas capacidades, mejorar su presentación y corregir instrucciones y textos.
+Improve the existing experience from choosing an invitation to receiving its link, and simplify management dashboard operations. The application already supports orders, quotes, manual payments, customization details, review, approval, publication, and guests. The objective is to reorganize these capabilities, improve their presentation, and correct instructions and copy.
 
-El servicio seguirá siendo personalizado: el cliente transfiere por Nequi y se comunica con el equipo; el equipo verifica el ingreso fuera de la plataforma, registra el estado correspondiente y prepara la invitación. Una notificación del cliente no acredita dinero. La entrega ocurre después de la revisión y de cumplir las condiciones del pedido, no inmediatamente al transferir.
+The service will remain personalized: the client transfers payment through Nequi and contacts the team; the team verifies receipt outside the platform, records the corresponding status, and prepares the invitation. A client notification does not confirm receipt of funds. Delivery happens after review and fulfillment of the order's conditions, rather than immediately after a transfer.
 
-## Recorrido que debe quedar comprensible
+## The Journey That Must Be Clear
 
-Elegir diseño → solicitar y confirmar condiciones → recibir instrucciones de pago → transferir y contactar al equipo → esperar verificación → completar/enviar información → revisar la invitación → recibir el enlace publicado.
+Choose a design → request and confirm terms → receive payment instructions → transfer payment and contact the team → wait for verification → complete/submit information → review the invitation → receive the published link.
 
-Este esquema explica el recorrido; no obliga a bloquear la preparación anticipada de información que ya permite la aplicación. Cada pantalla debe indicar qué puede hacer el cliente, qué está esperando y quién debe actuar.
+This outline explains the journey; it does not require blocking the early preparation of information already supported by the application. Each screen must show what the client can do, what they are waiting for, and who needs to act.
 
-## Entregables
+## Deliverables
 
-| Bloque | Estimación | Trabajo pendiente | Criterios de aceptación |
+| Workstream | Estimate | Pending Work | Acceptance Criteria |
 | --- | --- | --- | --- |
-| 1. Elección y solicitud | 4 h | Mejorar la jerarquía de catálogo/demostración y el inicio del pedido: diseño elegido, qué incluye el servicio, precio confirmado o necesidad de cotización, y explicación de los pasos siguientes. | El diseño elegido se conserva al solicitar; el resumen distingue un precio orientativo de una cotización confirmada; los campos obligatorios y errores son claros; el formulario funciona en móvil sin desbordamiento. No se modifica la política comercial. |
-| 2. Pago manual y seguimiento del cliente | 4 h | Reorganizar el resumen del pedido y sus acciones para explicar Nequi, contacto con el equipo, aceptación de condiciones y espera de verificación. Priorizar una acción pertinente por estado en el portal, utilizando los estados existentes. | Se distingue «pendiente de pago», «aviso recibido» y «pago verificado por el equipo» según los datos reales del pedido. El aviso del cliente nunca confirma dinero. El cliente encuentra la siguiente acción o un mensaje claro de espera; conserva la posibilidad de preparar datos anticipadamente. |
-| 3. Revisión y recepción de la invitación | 4 h | Clarificar vista previa, solicitud de ajustes, aprobación, publicación y entrega. Hacer visibles las consecuencias de cada acción y distinguir el enlace del cliente del enlace de invitados. | La vista previa no se presenta como una invitación entregada. Una aprobación no equivale a publicación. El pedido publicado destaca su enlace y la acción de compartirlo; el enlace privado no se ofrece como enlace para invitados. Se conservan los controles existentes de aprobación, versión y saldo. |
-| 4. Gestión diaria | 5 h | Reorganizar la lista y ficha de pedidos para priorizar qué necesita atención: cotizar, verificar pago externamente, revisar datos, preparar, resolver ajustes o publicar. Reducir el peso de cabeceras y paneles secundarios y ordenar las acciones existentes. | Con varios pedidos ficticios el operador identifica el pendiente y el responsable. La ficha permite encontrar condiciones, estado de pago y siguiente acción sin recorrer secciones irrelevantes. Las acciones inválidas permanecen bloqueadas y se explica el motivo cuando corresponda. |
-| 5. Coherencia visual, textos y comprobación | 3 h | Completar la revisión transversal de títulos, tratamiento al cliente, botones, confirmaciones y errores. Revisar las pantallas modificadas en móvil y escritorio, adaptar las comprobaciones necesarias y documentar el nuevo recorrido. | Los botones nombran acciones concretas y las confirmaciones explican qué cambió. Se revisan foco de teclado, legibilidad y disposición a 390 px y 1440 px. Pasan las suites existentes y la compilación; se añaden o ajustan pruebas solo para los comportamientos modificados. Se documenta un recorrido completo con datos ficticios. |
-| **Total estimado** | **20 h** | **Mejoras de uso sobre el producto existente** | **Evidencia: cambios reales, capturas comparables, escenarios verificados y resultados de pruebas.** |
+| 1. Selection and request | 4 h | Improve the catalog/demo hierarchy and order creation: selected design, service inclusions, confirmed price or need for a quote, and an explanation of the next steps. | The selected design is preserved when requesting; the summary distinguishes an indicative price from a confirmed quote; required fields and errors are clear; the form works on mobile without overflow. Commercial policy is unchanged. |
+| 2. Manual payment and client tracking | 4 h | Reorganize the order summary and its actions to explain Nequi, contacting the team, accepting terms, and waiting for verification. Prioritize one relevant portal action per status, using existing statuses. | “Pending payment,” “notification received,” and “payment verified by the team” are distinguished according to actual order data. A client notification never confirms receipt of funds. The client finds the next action or a clear waiting message and retains the ability to prepare information early. |
+| 3. Invitation review and delivery | 4 h | Clarify preview, change requests, approval, publication, and delivery. Make each action's consequences visible and distinguish the client link from the guest link. | The preview is not presented as a delivered invitation. Approval does not mean publication. A published order highlights its link and sharing action; the private link is not offered as a guest link. Existing approval, version, and balance checks are preserved. |
+| 4. Daily management | 5 h | Reorganize the order list and details to prioritize what needs attention: quoting, external payment verification, reviewing information, preparation, resolving changes, or publication. Reduce the prominence of headers and secondary panels and organize existing actions. | With several fictional orders, the operator identifies the pending task and responsible party. Order details make terms, payment status, and the next action easy to find without browsing irrelevant sections. Invalid actions remain blocked, with reasons explained where appropriate. |
+| 5. Visual consistency, copy, and verification | 3 h | Complete a cross-screen review of headings, how clients are addressed, buttons, confirmations, and errors. Review modified screens on mobile and desktop, adapt necessary checks, and document the new journey. | Buttons name concrete actions, and confirmations explain what changed. Keyboard focus, legibility, and layout are reviewed at 390 px and 1440 px. Existing suites and the build pass; tests are added or adjusted only for modified behavior. A complete journey with fictional data is documented. |
+| **Estimated total** | **20 h** | **Usability improvements to the existing product** | **Evidence: actual changes, comparable screenshots, verified scenarios, and test results.** |
 
-Las modificaciones visuales se realizan en las pantallas de los bloques 1 a 4; el bloque 5 es la revisión transversal final, no un rediseño completo de todo el sitio en tres horas. Si el alcance excede las estimaciones, se acordará una porción funcional menor y se registrará el trabajo real.
+Visual changes take place in the screens covered by workstreams 1 through 4; workstream 5 is the final cross-screen review, rather than a complete site redesign in three hours. If the scope exceeds the estimates, a smaller functional scope will be agreed upon and actual work will be recorded.
 
-## Escenarios de comprobación
+## Verification Scenarios
 
-1. Solicitud nueva con diseño seleccionado y condiciones todavía sin confirmar.
-2. Condiciones confirmadas; cliente acepta y recibe instrucciones de pago.
-3. Cliente informa que transfirió, pero el equipo todavía no ha verificado el ingreso.
-4. Equipo registra un pago comprobado fuera de la plataforma; la información del evento todavía está incompleta.
-5. Información enviada y preparación a cargo del equipo.
-6. Versión enviada a revisión; el cliente solicita ajustes o aprueba.
-7. Diseño aprobado con un saldo pendiente, si el pedido admite anticipo.
-8. Pedido aprobado y pagado; publicación y entrega del enlace de invitados.
+1. New request with a selected design and terms not yet confirmed.
+2. Confirmed terms; client accepts and receives payment instructions.
+3. Client reports a transfer, but the team has not yet verified receipt.
+4. Team records a payment verified outside the platform; event information is still incomplete.
+5. Information submitted and preparation assigned to the team.
+6. Version sent for review; client requests changes or approves.
+7. Approved design with an outstanding balance, if the order allows a deposit.
+8. Approved and paid order; publication and delivery of the guest link.
 
-Estos escenarios usarán identidades, referencias y pagos ficticios. No requieren recibir dinero, conectar una cuenta de Nequi ni cargar datos de clientes reales.
+These scenarios will use fictional identities, references, and payments. They do not require receiving money, connecting a Nequi account, or uploading real client data.
 
-## Fuera de este bloque
+## Outside This Scope
 
-- Pasarela de pago, conciliación bancaria, cobros dentro de la aplicación y confirmación automática de transferencias.
-- Generación o entrega automática del producto sin intervención del equipo.
-- Cambios de precios, políticas de ajustes, condiciones comerciales o plazos sin una decisión del propietario.
-- Migración de Cloudflare, implementación inicial de pedidos o creación de las pruebas que ya existen: ese trabajo ya se hizo.
-- Incorporación de modelos de IA, entrenamiento, inferencia o infraestructura de machine learning.
+- Payment gateway, bank reconciliation, in-app payment collection, and automatic transfer confirmation.
+- Automatic product generation or delivery without team involvement.
+- Changes to prices, revision policies, commercial terms, or turnaround times without an owner decision.
+- Cloudflare migration, initial order implementation, or creation of tests that already exist: that work is already complete.
+- Introduction of AI models, training, inference, or machine learning infrastructure.
 
-## Base técnica y preparación
+## Technical Baseline and Preparation
 
-El 5 de noviembre de 2026 se verificaron 15 pruebas de lógica/servidor, 8 de Cloudflare/exportación y las compilaciones correspondientes. El empaquetado de Workers fue un dry-run. Estos resultados son la base existente, no entregables pendientes de este roadmap. Ver [VALIDACION.md](docs/VALIDACION.md) y [REVISION-DE-USO.md](docs/REVISION-DE-USO.md).
+On November 5, 2026, 15 logic/server tests, 8 Cloudflare/export tests, and the corresponding builds were verified. Workers packaging was a dry run. These results are the existing baseline, rather than pending deliverables in this roadmap. See [VALIDACION.md](docs/VALIDACION.md) and [REVISION-DE-USO.md](docs/REVISION-DE-USO.md).
 
-Licencia, revisión de recursos de terceros, saneamiento del historial y preparación del formulario se gestionan aparte. La presentación debe describir honestamente la finalidad del producto y su futuro uso con datos de clientes e invitados; este roadmap no certifica elegibilidad ni aceptación del programa. Las sesiones propuestas usarán únicamente datos ficticios.
+Licensing, third-party asset review, history cleanup, and application form preparation are handled separately. The submission must honestly describe the product's purpose and its future use of client and guest data; this roadmap does not certify program eligibility or acceptance. Proposed sessions will use fictional data only.

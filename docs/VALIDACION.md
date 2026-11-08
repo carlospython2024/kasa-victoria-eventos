@@ -1,54 +1,54 @@
-# Registro de verificación
+# Verification Log
 
-Las entradas describen lo comprobado en cada fecha. Para el estado actual deben leerse también las verificaciones posteriores y `CLOUDFLARE-MIGRATION.md`; los límites de una entrada antigua no implican que ese trabajo siga pendiente hoy.
+Entries describe what was verified on each date. For the current status, also read later verification entries and `CLOUDFLARE-MIGRATION.md`; limitations in an older entry do not imply that the work remains pending today.
 
-## Verificación del flujo · 28 de octubre de 2026
+## Workflow Verification · October 28, 2026
 
-- TypeScript: cliente y servidor sin errores.
-- Quince pruebas correctas: lógica comercial, autenticación, origen de solicitudes, separación de pedidos, fotografía privada, pago inicial configurable, referencias duplicadas, aprobación, publicación, CSV, enlaces personales, cupos, revocación y vigencia.
-- Prueba en navegador con base separada: acceso a gestión, revisión del cliente, aprobación, publicación de una invitación con sus datos, envío de asistencia y consulta de esa respuesta en el pedido.
-- Versión comercial: 18 rutas prerenderizadas más entrada para rutas dinámicas.
-- Formulario de solicitud comprobado en escritorio y a 390 px mediante visor responsive: sin desbordamiento ni imágenes rotas.
-- Respaldo real de la base de pruebas y sus imágenes: se abrió la copia y se comprobaron sus pedidos y fotografías.
-- Los datos de QA están en `tmp/workflow-qa/`. El panel real de `var/` conserva cero pedidos y no tiene contraseña administrativa creada.
+- TypeScript: no client or server errors.
+- Fifteen passing tests: business logic, authentication, request origins, order isolation, private photos, configurable initial payment, duplicate references, approval, publication, CSV, personal links, guest allowances, revocation, and expiration.
+- Browser test with a separate database: management access, client review, approval, publication of an invitation with its data, attendance submission, and retrieval of that response in the order.
+- Public build: 18 prerendered routes plus an entry point for dynamic routes.
+- Request form checked on desktop and at 390 px using a responsive viewer: no overflow or broken images.
+- Actual backup of the test database and its images: the copy was opened, and its orders and photos were checked.
+- QA data is in `tmp/workflow-qa/`. The live dashboard in `var/` retains zero orders and has no administrative password set.
 
-Capturas en `docs/screenshots/`: `flujo-gestion.png`, `flujo-cliente.png` y `flujo-solicitud-movil.png`. Los nombres y pagos de estas capturas son pruebas ficticias, no clientes ni cobros reales.
+Screenshots in `docs/screenshots/`: `flujo-gestion.png`, `flujo-cliente.png`, and `flujo-solicitud-movil.png`. Names and payments in these screenshots are fictional test data, rather than real clients or charges.
 
-## Límites de verificación
+## Verification Limitations
 
-No se realizó un cobro real en Nequi ni se enviaron correos externos. El adaptador de correo está preparado, pendiente de credenciales y remitente verificado. El servidor se comprobó en Windows con Node 24; no se ejecutó la imagen Docker ni un despliegue público con dominio HTTPS.
+No real Nequi payment was collected, and no external emails were sent. The email adapter is prepared, pending credentials and a verified sender. The server was checked on Windows with Node 24; neither the Docker image nor a public deployment with an HTTPS domain was run.
 
-Antes de lanzar faltan marca definitiva, dominio, alojamiento persistente, correo y las condiciones generales que el negocio aún debe cerrar. Los pagos actuales se verifican manualmente y cada cotización debe confirmarse antes de cobrar.
+Before launch, the final brand, domain, persistent hosting, email, and general terms still need to be finalized by the business. Current payments are verified manually, and each quote must be confirmed before collecting payment.
 
-## Verificación local · 5 de noviembre de 2026
+## Local Verification · November 5, 2026
 
-Carlos ejecutó estos comandos en Windows con Node.js 26.13.0 y pnpm 11.28.11 y compartió sus resultados:
+Carlos ran these commands on Windows with Node.js 26.13.0 and pnpm 11.28.11 and shared the results:
 
-- `pnpm test`: 15 pruebas correctas, sin fallos ni pruebas omitidas.
-- `pnpm build`: comprobaciones de TypeScript y compilación de Vite correctas; 18 rutas prerenderizadas. Esta ejecución usó modo local sin dominio público.
-- `pnpm test:cloudflare`: compilación del cliente y del Worker correcta; 8 pruebas correctas, sin fallos ni pruebas omitidas. La compilación usó el origen HTTPS configurado para Workers.
-- El empaquetado de Wrangler terminó con `--dry-run: exiting now.`; este comando no publicó una nueva versión ni validó por sí solo el comportamiento del servicio remoto.
+- `pnpm test`: 15 passing tests, with no failures or skipped tests.
+- `pnpm build`: successful TypeScript checks and Vite build; 18 prerendered routes. This run used local mode without a public domain.
+- `pnpm test:cloudflare`: successful client and Worker builds; 8 passing tests, with no failures or skipped tests. The build used the HTTPS origin configured for Workers.
+- Wrangler packaging ended with `--dry-run: exiting now.`; this command did not publish a new version or independently validate remote service behavior.
 
-Son 23 pruebas correctas entre la suite de servidor/lógica y la suite Cloudflare/exportación. Las pruebas de Cloudflare usan Miniflare y recursos de prueba locales. No se certifican mediante estos resultados el envío de correos reales, cobros, recuperación en producción, rendimiento con tráfico real ni compatibilidad con todas las versiones de Node.
+There were 23 passing tests across the server/logic and Cloudflare/export suites. Cloudflare tests use Miniflare and local test resources. These results do not certify real email delivery, payments, production recovery, performance under real traffic, or compatibility with all Node versions.
 
-La compilación y el despliegue de prueba de Cloudflare ya existen; no deben proponerse como funcionalidades aún no implementadas. Cualquier trabajo futuro debe especificar qué comportamiento adicional o escenario faltante se abordará.
+The Cloudflare build and test deployment already exist; they must not be proposed as functionality yet to be implemented. Any future work must specify which additional behavior or missing scenario will be addressed.
 
-### Revisión de secretos del historial
+### History Secret Scan
 
-Gitleaks 8.30.1 revisó las referencias locales accesibles: 9 commits y aproximadamente 1,10 MB de contenido. No detectó secretos. La revisión de rutas registradas encontró únicamente las plantillas `.env.example` y `.dev.vars.example`, sin `.env`, `.dev.vars`, bases SQLite ni archivos de `var/` registrados bajo los patrones inspeccionados.
+Gitleaks 8.30.1 scanned accessible local references: 9 commits and approximately 1.10 MB of content. It detected no secrets. The tracked-path review found only the `.env.example` and `.dev.vars.example` templates, with no tracked `.env`, `.dev.vars`, SQLite databases, or files from `var/` under the inspected patterns.
 
-Este resultado es un control acotado, no una garantía de ausencia absoluta de secretos o datos personales. No cubre todos los archivos ignorados, datos remotos, objetos Git inalcanzables ni derechos sobre recursos de terceros. La retirada actual de los MP3 tampoco elimina sus versiones históricas.
+This result is a bounded check, rather than a guarantee of the absolute absence of secrets or personal data. It does not cover all ignored files, remote data, unreachable Git objects, or third-party asset rights. Removing MP3 files from the current tree also does not remove their historical versions.
 
-### Separación posterior de configuración pública y privada
+### Subsequent Separation of Public and Private Configuration
 
-Se retiraron los contactos y destinatarios Nequi fijos del código y de la documentación operativa pública. Los valores existentes se conservaron en archivos locales excluidos de Git, sin cambiar la aplicación remota.
+Hardcoded contact details and Nequi recipients were removed from the code and public operational documentation. Existing values were preserved in local files excluded from Git, without changing the remote application.
 
-`pnpm test:all` pasó 19 pruebas de lógica/servidor/configuración y 9 de Cloudflare/exportación: 28 en total. Las nuevas comprobaciones incluyen aislamiento de contactos en modo demo, configuración pública de producción sin cargar claves del servidor en el prerender, prioridad de variables explícitas y configuración de contactos/pago en ambos servidores.
+`pnpm test:all` passed 19 logic/server/configuration tests and 9 Cloudflare/export tests: 28 in total. New checks include contact isolation in demo mode, public production configuration without loading server keys into prerendering, explicit variable precedence, and contact/payment configuration on both servers.
 
-También pasó `pnpm build:worker:production` con dry-run. Se verificó que el bundle del navegador y la configuración usada por el prerender corresponden al contacto conservado para producción. La compilación demo se inspeccionó y no contenía los números ni el titular conocidos. Estas comprobaciones no implican una publicación remota ni un ensayo con dinero o clientes reales.
+`pnpm build:worker:production` also passed with a dry run. The browser bundle and prerender configuration were verified to match the contact retained for production. The demo build was inspected and did not contain the known numbers or account holder. These checks do not imply a remote deployment or a trial with real money or clients.
 
-### Publicación del paquete de preparación
+### Publication of the Preparation Package
 
-Con autorización de Carlos, el 5 de noviembre de 2026 se actualizó la rama principal pública con el paquete preparado `a3cacea`. Se verificaron el commit remoto y el árbol de archivos desde GitHub: README, LICENSE MIT y ROADMAP presentes; archivos privados de configuración, MP3 y referencias retiradas ausentes. El escaneo de los diez commits preparados no detectó secretos.
+With Carlos's authorization, the public main branch was updated on November 5, 2026, with the prepared package `a3cacea`. The remote commit and file tree were verified through GitHub: README, MIT LICENSE, and ROADMAP present; private configuration files, MP3 files, and removed references absent. Scanning the ten prepared commits detected no secrets.
 
-La carpeta habitual de trabajo quedó sincronizada con ese historial conservando sus archivos privados y audios locales. Los metadatos e historial anteriores se respaldaron fuera del repositorio. No se ejecutó un despliegue de la aplicación ni se modificaron D1/R2 como parte de esta publicación de Git. El alcance de UX del roadmap sigue pendiente y la aceptación de Alignerr no está confirmada.
+The usual working folder was synchronized with that history while preserving its private files and local audio. Previous metadata and history were backed up outside the repository. No application deployment was performed, and D1/R2 were not modified as part of this Git publication. The roadmap's UX scope remains pending, and Alignerr acceptance is not confirmed.

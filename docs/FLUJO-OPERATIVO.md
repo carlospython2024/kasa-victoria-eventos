@@ -1,48 +1,48 @@
-# Del catálogo a la celebración
+# From Catalog to Celebration
 
-Antes, explorar un diseño terminaba en una consulta sin seguimiento y las respuestas quedaban en el navegador. Ahora cada pedido conserva la elección y muestra el siguiente paso.
+Previously, exploring a design ended in an inquiry without tracking, and responses stayed in the browser. Now each order preserves the selection and shows the next step.
 
-| Antes | Ahora | Beneficio |
+| Before | Now | Benefit |
 | --- | --- | --- |
-| Datos repetidos por mensajes | Solicitud con modelo y vigencia | Menos intercambio inicial |
-| Fotos y textos dispersos | Formulario guardado en el pedido | Una fuente de información |
-| Confusión entre pago enviado y recibido | Aviso y verificación separados | Estado del dinero claro |
-| Cambios en conversaciones sueltas | Rondas con historial | Menos ajustes perdidos |
-| Entrega sin aprobación registrada | Versión aprobada y copia publicada | Cambios controlados |
-| Confirmaciones locales | Respuestas compartidas y CSV | Organización real |
-| Cupos iguales para todos | Enlaces personales opcionales | Control por invitado |
+| Repeated details across messages | Request with design and expiration period | Less initial back-and-forth |
+| Scattered photos and text | Form saved with the order | One source of information |
+| Confusion between payment sent and received | Separate notification and verification | Clear payment status |
+| Changes scattered across conversations | Rounds with history | Fewer missed changes |
+| Delivery without recorded approval | Approved version and published snapshot | Controlled changes |
+| Local confirmations | Shared responses and CSV | Practical organization |
+| Equal guest allowances for everyone | Optional personal links | Per-guest control |
 
-## Operación diaria
+## Daily Operations
 
-1. Abrir Gestión y revisar consultas y pedidos.
-2. Confirmar cotización, vigencia, pago inicial, ajustes y plazo.
-3. Revisar el ingreso en Nequi y registrar valor y referencia.
-4. Validar los datos enviados; pedir lo que falta en una sola nota.
-5. Editar contenido, fotos y música. Revisar nombres, fechas y mapa en la vista previa.
-6. Enviar a revisión y resolver los cambios de cada ronda juntos.
-7. Publicar con el pago completo y la aprobación del cliente.
-8. La pareja comparte su enlace y consulta las confirmaciones desde su espacio privado.
+1. Open the management dashboard (Gestión) and review inquiries and orders.
+2. Confirm the quote, expiration period, initial payment, revisions, and turnaround time.
+3. Check receipt in Nequi and record the amount and reference.
+4. Validate submitted information; request missing details in a single note.
+5. Edit content, photos, and music. Check names, dates, and the map in the preview.
+6. Send for review and address each round's changes together.
+7. Publish after full payment and client approval.
+8. The couple shares their link and checks responses from their private workspace.
 
-## Condiciones actuales
+## Current Terms
 
-- WhatsApp: contacto del negocio definido en la configuración privada.
-- Nequi: destinatario e instrucciones confirmados por el negocio y definidos en la configuración privada.
-- Pago completo por defecto; anticipo configurable.
-- Entrega de 3 a 5 días hábiles después de validar información.
-- El cliente propone la vigencia posterior al evento; el negocio confirma duración y valor antes del pago. No se inventaron suplementos.
-- Dos rondas como valor inicial editable; la política general de ajustes está pendiente.
-- Precios de boda de referencia: 163.000 COP habitual y 130.500 COP promocional. Cada pedido requiere confirmación. Otras celebraciones se cotizan por separado.
+- WhatsApp: business contact defined in private configuration.
+- Nequi: recipient and instructions confirmed by the business and defined in private configuration.
+- Full payment by default; configurable deposit.
+- Delivery within 3 to 5 business days after information is validated.
+- The client proposes the post-event expiration period; the business confirms duration and price before payment. No surcharges have been invented.
+- Two rounds as an editable initial value; the general revision policy is pending.
+- Indicative wedding prices: COP 163,000 standard and COP 130,500 promotional. Each order requires confirmation. Other celebrations are quoted separately.
 
-## Para una compra más sencilla
+## Making Purchasing Easier
 
-Se añadió «Elegir este diseño», un formulario inicial corto y la posibilidad de preparar datos antes de pagar. El cliente ve cuánto falta pagar, el estado del trabajo y su siguiente paso. El enlace final y las confirmaciones están juntos.
+“Elegir este diseño” (“Choose this design”), a short initial form, and the option to prepare information before paying were added. Clients see the remaining balance, work status, and their next step. The final link and responses are together.
 
-Para agilizar la operación, conviene revisar solicitudes en bloques y reunir los cambios de cada ronda. Los avisos por correo se activarán cuando se configuren buzón y proveedor.
+To streamline operations, review requests in batches and consolidate each round's changes. Email notifications will be enabled once the mailbox and provider are configured.
 
-## Pendientes externos
+## External Dependencies Still Pending
 
-Nombre definitivo, dominio, alojamiento persistente y correo. Antes del lanzamiento deben cerrarse tarifas generales, política de ajustes e identidad y conservación de datos del negocio. El sistema muestra estos pendientes y no declara enviados correos sin proveedor.
+Final name, domain, persistent hosting, and email. Before launch, general pricing, revision policy, the business's identity, and data retention must be finalized. The system displays these pending items and does not claim emails were sent without a provider.
 
-La conciliación automática de pagos puede añadirse después con un proveedor y notificaciones verificadas. Un enlace de pago por sí solo no acredita dinero.
+Automatic payment reconciliation can be added later with a provider and verified notifications. A payment link alone does not confirm receipt of funds.
 
-Referencias: [Nequi Negocios](https://www.nequi.com.co/negocios/app-negocios), [verificación de pagos](https://ayuda.nequi.com.co/hc/es/articles/34035891603341--C%C3%B3mo-saber-si-un-pago-hecho-desde-Nequi-es-real), [API de correo Resend](https://resend.com/docs/api-reference/emails/send-email).
+References: [Nequi Business](https://www.nequi.com.co/negocios/app-negocios), [payment verification](https://ayuda.nequi.com.co/hc/es/articles/34035891603341--C%C3%B3mo-saber-si-un-pago-hecho-desde-Nequi-es-real), [Resend Email API](https://resend.com/docs/api-reference/emails/send-email).
